@@ -9,12 +9,12 @@ const config = {
 
     entry: [
         'babel-regenerator-runtime',
-        './src/js/app/app.react.js'
+        './src/js/main.js'
     ],
 
     output: {
         path: path.join(__dirname, 'static/js'),
-        filename: 'app.js',
+        filename: 'main.js',
         publicPath: '/static/js/'
     },
 
