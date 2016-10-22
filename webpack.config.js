@@ -48,5 +48,5 @@ const config = {
 };
 
 if (process.env.HOT) {
-    
+
 }
