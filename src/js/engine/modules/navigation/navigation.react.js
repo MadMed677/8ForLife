@@ -2,7 +2,9 @@ import React            from 'react';
 import { Link }         from 'react-router';
 
 /**
- * React Class Navigation. Класс за вывод навигации.
+ * React Class Navigation.
+ * Данный класс отвечает за отрисовку навигации.
+ * Более подробную информацию, вы можете посмотреть в *.ru.md файле
  *
  * @class
  */

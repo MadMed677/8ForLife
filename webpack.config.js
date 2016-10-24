@@ -42,7 +42,7 @@ const config = {
             NODE_ENV: JSON.stringify(NODE_ENV)
         }),
         new JSDocPlugin({
-            conf: './jsdoc.conf'
+            conf: './jsdoc.conf.json'
         })
     ],
 
