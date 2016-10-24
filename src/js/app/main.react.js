@@ -7,6 +7,10 @@ import Navigation   from 'navigation/navigation.react';
  * @class
  */
 class Root extends React.Component {
+    static propTypes = {
+        children: React.PropTypes.object
+    };
+
     /**
      * Метод для отрисовки компонента
      *
@@ -17,7 +21,7 @@ class Root extends React.Component {
         return (
             <div>
                 <Navigation />
-                <div className="container">First content</div>
+                { this.props.children }
             </div>
         );
     }

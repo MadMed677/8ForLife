@@ -10,12 +10,14 @@
   "author": "Artem Anashev <madmed677@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "lodash": "4.16.4",
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
-    "redux": "3.6.0"
+    "redux": "3.6.0",
+    "require-all": "2.0.0"
   },
   "devDependencies": {
     "babel-core": "6.17.0",
@@ -35,6 +37,7 @@
     "enzyme": "2.5.1",
     "eslint": "3.8.1",
     "eslint-config-airbnb": "12.0.0",
+    "eslint-import-resolver-webpack": "0.6.0",
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
