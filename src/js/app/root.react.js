@@ -10,36 +10,14 @@ const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispat
 
 /**
  * React Class Root. Самый базовый класс. Точка входа.
- * @className
+ *
+ * @class
  */
 
 class Root extends React.Component {
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                            <a className="navbar-brand" href="#">Brand</a>
-                        </div>
-
-                        <div className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
-                                <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                            <form className="navbar-form navbar-left">
-                                <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Search" />
-                                </div>
-                                <button type="submit" className="btn btn-default">Submit</button>
-                            </form>
-                            <ul className="nav navbar-nav navbar-right">
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+            <div className="page">
                 { this.props.children }
             </div>
         );
