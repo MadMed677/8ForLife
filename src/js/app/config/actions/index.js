@@ -3,7 +3,6 @@ export const increment = index => ({
     index: index
 });
 
-
 export const decrement = index => ({
     type: 'DECREMENT',
     index: index

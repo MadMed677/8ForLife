@@ -87,7 +87,8 @@
 
     // Import Rules
     "import/no-named-as-default": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "import/no-extraneous-dependencies": [0],
+    "import/no-unresolved": [0],
 
     // React Rules
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

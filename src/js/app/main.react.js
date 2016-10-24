@@ -6,7 +6,7 @@ import Navigation   from 'navigation/navigation.react';
  *
  * @class
  */
-export default class Root extends React.Component {
+class Root extends React.Component {
     /**
      * Метод для отрисовки компонента
      *
@@ -22,3 +22,5 @@ export default class Root extends React.Component {
         );
     }
 }
+
+export default Root;
