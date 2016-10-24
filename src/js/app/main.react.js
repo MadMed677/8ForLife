@@ -8,7 +8,7 @@ import React        from 'react';
 export default class Root extends React.Component {
     render() {
         return (
-            <div>First content</div>
+            <div className="container">First content</div>
         );
     }
 }
