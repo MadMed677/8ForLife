@@ -9,7 +9,7 @@ const config = {
 
     entry: [
         'babel-regenerator-runtime',
-        './src/js/main.js'
+        './src/js/app/app.react.js'
     ],
 
     output: {
