@@ -46,6 +46,12 @@ const config = {
         })
     ],
 
+    resolve: {
+        root: [
+            path.resolve('./src/js/engine/modules')
+        ]
+    },
+
     devtool: NODE_ENV === 'development' ? 'eval' : null
 
 };

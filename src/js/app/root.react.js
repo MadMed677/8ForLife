@@ -1,8 +1,7 @@
 import React                    from 'react';
-import { Link }                 from 'react-router';
 import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
-import * as actionCreators      from './actions';
+import * as actionCreators      from './config/actions';
 
 const mapStateToProps = state => ({ ...state });
 
@@ -13,8 +12,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispat
  *
  * @class
  */
-
 class Root extends React.Component {
+    static propTypes = {
+        children: React.PropTypes.object
+    };
+
     render() {
         return (
             <div className="page">

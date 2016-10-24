@@ -93,6 +93,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-curly-spacing": [2, "always"],
     "react/forbid-prop-types": [2, { "forbid": ["any"] }],
+    "react/prefer-stateless-function": [0],
     "react/jsx-indent": [2, 4]
   }
 }
