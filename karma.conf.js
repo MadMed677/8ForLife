@@ -1,5 +1,5 @@
 const path = require('path');
-const srcGlob = 'src/**/specs/index.spec.js';
+const srcGlob = './src/js/**/*.spec.js';
 process.env.BABEL_ENV = 'test';
 
 module.exports = function setKarmaConfig(config) {
@@ -16,7 +16,7 @@ module.exports = function setKarmaConfig(config) {
 
         // list of files / patterns to load in the browser
         // eqivalent: files: [srcGlob]
-        files: ['./src/**/specs/index.spec.js'],
+        files: [srcGlob],
 
         plugins: [
             'karma-chai',
@@ -38,7 +38,7 @@ module.exports = function setKarmaConfig(config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         // eqivalent: files: [srcGlob]
         preprocessors: {
-            './src/**/specs/index.spec.js': ['webpack', 'sourcemap']
+            [srcGlob]: ['webpack', 'sourcemap']
         },
 
         webpack: {
@@ -76,6 +76,15 @@ module.exports = function setKarmaConfig(config) {
                             }
                         }
                     }
+                ]
+            },
+
+            resolve: {
+                root: [
+                    path.resolve('./src/js/engine'),
+                    path.resolve('./src/js/app/config'),
+                    path.resolve('./src/js/app/modules'),
+                    path.resolve('./src/js/engine/modules')
                 ]
             },
 

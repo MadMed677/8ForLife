@@ -6,7 +6,7 @@
     "document": false,
     "navigator": false,
     "window": false,
-    "describe": false,
+    "describe": true,
     "xdescribe": false,
     "ddescribe": false,
     "before": false,

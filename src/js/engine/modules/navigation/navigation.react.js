@@ -8,15 +8,21 @@ import { Link }         from 'react-router';
  */
 class Navigation extends React.Component {
     /**
+     * Компонент замаунтился
+     * @public
+     */
+    componentDidMount() {}
+
+    /**
      * Метод для отрисовки компонента
      *
-     * @render
      * @return {JSX}
+     * @public
      */
     render() {
         return (
             <nav className="navbar navbar-default">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="navbar-header">
                         <Link className="navbar-brand" to="/">Brand</Link>
                     </div>

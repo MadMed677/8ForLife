@@ -48,6 +48,9 @@ const config = {
 
     resolve: {
         root: [
+            path.resolve('./src/js/engine'),
+            path.resolve('./src/js/app/config'),
+            path.resolve('./src/js/app/modules'),
             path.resolve('./src/js/engine/modules')
         ]
     },
