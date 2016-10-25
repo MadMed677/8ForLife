@@ -1,5 +1,8 @@
 import React            from 'react';
+import _                from 'lodash';
 import { Link }         from 'react-router';
+
+import routes           from 'routes.js';
 
 /**
  * React Class Navigation.
@@ -9,11 +12,20 @@ import { Link }         from 'react-router';
  * @class
  */
 class Navigation extends React.Component {
+    static defaultProps = {
+        brandName: 'Brand'
+    };
+
+    static propTypes = {
+        brandName: React.PropTypes.string
+    };
+
     /**
      * Компонент замаунтился
      * @public
      */
     componentDidMount() {}
+
 
     /**
      * Метод для отрисовки компонента
@@ -22,16 +34,21 @@ class Navigation extends React.Component {
      * @public
      */
     render() {
+        const bLinks = _.map(routes, route =>
+            <li key={ `navigation-route-${route.route}` }>
+                <Link className="navbar__link" to={ route.route }>{ route.name }</Link>
+            </li>
+        );
+
         return (
             <nav className="navbar navbar-default">
                 <div className="container">
                     <div className="navbar-header">
-                        <Link className="navbar-brand" to="/">Brand</Link>
+                        <Link className="navbar-brand" to="/">{ this.props.brandName }</Link>
                     </div>
 
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link 2</a></li>
+                        { bLinks }
                     </ul>
                 </div>
             </nav>

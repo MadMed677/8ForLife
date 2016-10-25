@@ -1,5 +1,11 @@
 import React            from 'react';
 
+/**
+ * React Class Dashboard.
+ * Класс отвечает за главный компонент на /dashboard
+ *
+ * @class
+ */
 class Dashboard extends React.Component {
     static propTypes = {
 
@@ -9,13 +15,17 @@ class Dashboard extends React.Component {
 
     }
 
-    constructor() {
-        super();
-    }
-
+    /**
+     * Метод для отрисовки компонента
+     *
+     * @return {JSX}
+     * @public
+     */
     render() {
         return (
-            <div>Render</div>
+            <div className="container">
+                Render
+            </div>
         );
     }
 }

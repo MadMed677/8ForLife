@@ -20,7 +20,7 @@ class Root extends React.Component {
     render() {
         return (
             <div>
-                <Navigation />
+                <Navigation brandName="8 For Life" />
                 { this.props.children }
             </div>
         );

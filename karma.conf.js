@@ -79,15 +79,6 @@ module.exports = function setKarmaConfig(config) {
                 ]
             },
 
-            resolve: {
-                root: [
-                    path.resolve('./src/js/engine'),
-                    path.resolve('./src/js/app/config'),
-                    path.resolve('./src/js/app/modules'),
-                    path.resolve('./src/js/engine/modules')
-                ]
-            },
-
             devtool: 'inline-source-map',
 
             resolve: {
@@ -95,7 +86,13 @@ module.exports = function setKarmaConfig(config) {
                 alias: {
                     // dynamic require calls in sinon confuse webpack so we ignore it
                     sinon: 'sinon/pkg/sinon'
-                }
+                },
+                root: [
+                    path.resolve('./src/js/engine'),
+                    path.resolve('./src/js/app/config'),
+                    path.resolve('./src/js/app/modules'),
+                    path.resolve('./src/js/engine/modules')
+                ]
             },
 
             externals: {
