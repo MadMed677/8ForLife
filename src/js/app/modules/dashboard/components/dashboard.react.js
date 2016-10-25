@@ -1,5 +1,7 @@
 import React            from 'react';
 
+import PageHeader       from 'page-header/page-header.react';
+
 /**
  * React Class Dashboard.
  * Класс отвечает за главный компонент на /dashboard
@@ -24,7 +26,9 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div className="container">
-                Render
+                <PageHeader>
+                    <h2>Render</h2>
+                </PageHeader>
             </div>
         );
     }

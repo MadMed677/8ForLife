@@ -8,7 +8,6 @@ const NODE_ENV          = process.env.NODE_ENV || 'development';
 const config = {
 
     entry: [
-        'babel-regenerator-runtime',
         './src/js/app/app.react.js'
     ],
 
@@ -24,6 +23,14 @@ const config = {
                 test: /\.js$/,
                 loader: 'babel',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                loaders: [
+                    'style-loader',
+                    'css-loader?importLoaders=1',
+                    'postcss-loader'
+                ]
             }
         ]
     },
@@ -58,21 +65,6 @@ const config = {
     devtool: NODE_ENV === 'development' ? 'eval' : null
 
 };
-
-// Hot loader
-if (process.env.HOT) {
-    config.devtool = 'eval'; // Speed up incremental builds
-    config.output.publicPath = 'http://localhost:1111/';
-    config.plugins.unshift(new webpack.HotModuleReplacementPlugin());
-    config.module.loaders[0].query.plugins.push('react-transform');
-    config.module.loaders[0].query.extra = {
-        'react-transform': [{
-            target: 'react-transform-hmr',
-            imports: ['react'],
-            locals: ['module']
-        }]
-    };
-}
 
 // Production config
 if (process.env.NODE_ENV === 'production') {
