@@ -75,6 +75,14 @@ module.exports = function setKarmaConfig(config) {
                                 }
                             }
                         }
+                    },
+                    {
+                        test: /\.css$/,
+                        loaders: [
+                            'style-loader',
+                            'css-loader?importLoaders=1',
+                            'postcss-loader'
+                        ]
                     }
                 ]
             },
