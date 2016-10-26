@@ -9,3 +9,6 @@ coverage
 
 # Dependency directory
 node_modules
+
+# Documentation
+documentation
