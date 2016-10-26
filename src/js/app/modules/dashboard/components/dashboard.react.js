@@ -11,11 +11,11 @@ import PageHeader       from 'page-header/page-header.react';
 class Dashboard extends React.Component {
     static propTypes = {
 
-    }
+    };
 
     state = {
 
-    }
+    };
 
     /**
      * Метод для отрисовки компонента
@@ -29,6 +29,15 @@ class Dashboard extends React.Component {
                 <PageHeader>
                     <h2>Render</h2>
                 </PageHeader>
+
+                <div className="row">
+                    <div className="col-sm-8">
+                        <h3>Draw</h3>
+                    </div>
+                    <div className="col-sm-4">
+                        <h3>Statistic</h3>
+                    </div>
+                </div>
             </div>
         );
     }
