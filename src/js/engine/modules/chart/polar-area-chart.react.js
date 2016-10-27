@@ -1,6 +1,8 @@
 import React            from 'react';
 import Chart            from 'chart.js';
 
+Chart.defaults.global.defaultFontFamily = "'PT Sans'";
+
 /**
  * React Class PolarAreaChart
  *
@@ -44,7 +46,8 @@ class PolarAreaChart extends React.Component {
                             'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(252, 110, 85, 0.2)'
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',
@@ -52,27 +55,47 @@ class PolarAreaChart extends React.Component {
                             'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
                             'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(252, 110, 85, 1)'
                         ],
                         borderWidth: 1
                     }
                 ]
             },
             options: {
+                title: {
+                    display: false
+                },
                 legend: {
                     display: true,
+                    position: 'left',
                     labels: {
-                        generateLabels: d => {
-                            return `Hello ${d}`;
-                        }
+                        fontFamily: "'PT Sans'",
+                        usePointStyle: true
                     }
+                },
+                tooltips: {
+                    enabled: true,
+                    titleFontFamily: "'PT Sans'",
+                    backgroundColor: 'rgba(255,255,255,.8)',
+                    titleFontColor: '#000',
+                    bodyFontColor: 'rgba(0,0,0,.7)',
+                    bodyFontStyle: 'bold',
+                    caretSize: 10,
+                    xPadding: 15,
+                    yPadding: 10
                 },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            min: 0,
+                            max: 10
                         }
                     }]
+                },
+                animation: {
+                    easing: 'easeOutQuad'
                 }
             }
         });
@@ -86,7 +109,7 @@ class PolarAreaChart extends React.Component {
      */
     render() {
         return (
-            <canvas id="barchart"></canvas>
+            <canvas id="barchart" />
         );
     }
 }

@@ -4,6 +4,8 @@ import { Link }         from 'react-router';
 
 import routes           from 'routes.js';
 
+import './navigation.post.css';
+
 /**
  * React Class Navigation.
  * Данный класс отвечает за отрисовку навигации.
@@ -36,7 +38,7 @@ class Navigation extends React.Component {
     render() {
         const bLinks = _.map(routes, route =>
             <li key={ `navigation-route-${route.route}` }>
-                <Link className="navbar__link" to={ route.route }>{ route.name }</Link>
+                <Link activeClassName="navbar__link_active_yes" className="navbar__link" to={ route.route }>{ route.name }</Link>
             </li>
         );
 

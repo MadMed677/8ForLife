@@ -36,10 +36,10 @@ class Dashboard extends React.Component {
                 </PageHeader>
 
                 <div className="row">
-                    <div className="col-sm-8">
+                    <div className="col-md-8">
                         <PolarAreaChart />
                     </div>
-                    <div className="col-sm-4">
+                    <div className="col-md-4">
                         <h3>Statistic</h3>
                     </div>
                 </div>
