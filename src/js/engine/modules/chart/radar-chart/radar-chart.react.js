@@ -17,7 +17,7 @@ class RadarChart extends React.Component {
      * @public
      */
     componentDidMount() {
-        const ctx = document.getElementById('barchart');
+        const ctx = document.getElementById('radar-chart');
         this.chart = this._createChart(ctx);
     }
 
@@ -71,7 +71,7 @@ class RadarChart extends React.Component {
      */
     render() {
         return (
-            <canvas id="barchart"></canvas>
+            <canvas id="radar-chart"></canvas>
         );
     }
 }
