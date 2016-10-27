@@ -22,6 +22,7 @@ class PolarAreaChart extends React.Component {
         const ctx = document.getElementById('polar-area-chart');
         this.chart = this._createChart(ctx);
 
+        // TODO: сделать передачу в props данных, на то, ставить ли bind или нет
         window.addEventListener('resize', this._onResize);
         window.dispatchEvent(new CustomEvent('resize'));
     }

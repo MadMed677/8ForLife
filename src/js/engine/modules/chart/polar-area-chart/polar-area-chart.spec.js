@@ -13,10 +13,4 @@ describe('<PolarAreaChart />', () => {
         const wrapper = shallow(<PolarAreaChart />);
         expect(wrapper.contains(<canvas id="polar-area-chart" />)).to.equal(true);
     });
-
-    it('компонент в поле "chart" записывает данные после mount\'а', () => {
-        const wrapper = shallow(<PolarAreaChart />);
-        expect(PolarAreaChart.chart).to.be.a('object');
-        expect(true).to.equal(true);
-    });
 });
