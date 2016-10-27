@@ -72,6 +72,9 @@
     "global-require": "warn",
     "comma-dangle": ["error", "never"],
 
+    // Class Rules
+    "class-methods-use-this": [0],
+
     // Parents Rules
     "arrow-parens": [2, "as-needed"],
     "no-confusing-arrow": 0,

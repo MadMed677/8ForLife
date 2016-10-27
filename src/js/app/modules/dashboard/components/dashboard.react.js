@@ -1,4 +1,9 @@
 import React            from 'react';
+import {
+    BarChart,
+    RadarChart,
+    PolarAreaChart
+}                       from 'chart/index';
 
 import PageHeader       from 'page-header/page-header.react';
 
@@ -14,7 +19,7 @@ class Dashboard extends React.Component {
     };
 
     state = {
-
+        userData: {}
     };
 
     /**
@@ -27,12 +32,12 @@ class Dashboard extends React.Component {
         return (
             <div className="container">
                 <PageHeader>
-                    <h2>Render</h2>
+                    <h2>- Dashboard page -</h2>
                 </PageHeader>
 
                 <div className="row">
                     <div className="col-sm-8">
-                        <h3>Draw</h3>
+                        <PolarAreaChart />
                     </div>
                     <div className="col-sm-4">
                         <h3>Statistic</h3>
