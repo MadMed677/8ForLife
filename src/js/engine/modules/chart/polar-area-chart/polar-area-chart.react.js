@@ -19,8 +19,29 @@ class PolarAreaChart extends React.Component {
      * @public
      */
     componentDidMount() {
-        const ctx = document.getElementById('barchart');
+        const ctx = document.getElementById('polar-area-chart');
         this.chart = this._createChart(ctx);
+
+        window.addEventListener('resize', this._onResize);
+        window.dispatchEvent(new CustomEvent('resize'));
+    }
+
+    chart = {}
+
+    /**
+     * Вызывается, когда пользователь изменяет рамер экрана
+     *
+     * @param {Object} [resize] - объект event
+     *
+     * @private
+     */
+    _onResize = () => {
+        const width = window.innerWidth;
+
+        const isDisplayed = width > 840;
+
+        this.chart.options.legend.display = isDisplayed;
+        this.chart.update();
     }
 
     /**
@@ -35,7 +56,7 @@ class PolarAreaChart extends React.Component {
         return new Chart(ctx, {
             type: 'polarArea',
             data: {
-                labels: require('./labels').default,
+                labels: require('./../labels').default,
                 datasets: [
                     {
                         label: 'Points',
@@ -109,7 +130,7 @@ class PolarAreaChart extends React.Component {
      */
     render() {
         return (
-            <canvas id="barchart" />
+            <canvas id="polar-area-chart" />
         );
     }
 }
