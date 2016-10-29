@@ -10,6 +10,7 @@ Chart.defaults.global.defaultFontFamily = "'PT Sans'";
  *
  * @param {Boolean} [isAutoHideLegend] - true, если легенду надо автоматически скрывать
  * @param {Number} [autoHideLegendWidth] - ширина, при которой надо скрывать легенду
+ * @param {Array} data - данные для отрисовки графика
  *
  * @class
  */
