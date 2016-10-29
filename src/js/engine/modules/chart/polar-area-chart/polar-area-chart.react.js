@@ -24,20 +24,7 @@ class PolarAreaChart extends React.Component {
     static defaultProps = {
         isAutoHideLegend: true,
         autoHideLegendWidth: 840,
-        data: [
-            {
-                categoryName: 'Здоровье и спорт',
-                value: 5
-            },
-            {
-                categoryName: 'Друзья и окружение',
-                value: 7
-            },
-            {
-                categoryName: 'Отношения',
-                value: 3
-            }
-        ]
+        data: []
     };
 
     state = {};
@@ -49,12 +36,16 @@ class PolarAreaChart extends React.Component {
      */
     componentDidMount() {
         const ctx = document.getElementById('polar-area-chart');
-        this.chart = this._createChart(ctx);
+        this.chart = this.createChart(ctx);
 
         if (this.props.isAutoHideLegend) {
             window.addEventListener('resize', this._onResize);
             window.dispatchEvent(new CustomEvent('resize'));
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.updateChart(nextProps.data);
     }
 
     /**
@@ -87,6 +78,21 @@ class PolarAreaChart extends React.Component {
     };
 
     /**
+     * Функция отвечающая за обновление графика
+     *
+     * @param {Array} inputData - новые данные
+     *
+     * @public
+     */
+    updateChart(inputData) {
+        const data = arrayConversion(inputData);
+
+        this.chart.data.labels = data.labels;
+        this.chart.data.datasets[0].data = data.data;
+        this.chart.update();
+    }
+
+    /**
      * Метод для создания графика
      *
      * @param {Object} ctx - контекст, где будет отрисован график
@@ -94,7 +100,7 @@ class PolarAreaChart extends React.Component {
      * @return {Chart} инстанс Chart'а
      * @private
      */
-    _createChart(ctx) {
+    createChart(ctx) {
         const data = arrayConversion(this.props.data);
 
         return new Chart(ctx, {
