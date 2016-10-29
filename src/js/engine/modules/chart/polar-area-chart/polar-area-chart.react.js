@@ -6,10 +6,21 @@ Chart.defaults.global.defaultFontFamily = "'PT Sans'";
 /**
  * React Class PolarAreaChart
  *
+ * @param {Boolean} [isAutoHideLegend] - true, если легенду надо автоматически скрывать
+ * @param {Number} [autoHideLegendWidth] - ширина, при которой надо скрывать легенду
+ *
  * @class
  */
 class PolarAreaChart extends React.Component {
-    static propTypes = {}
+    static propTypes = {
+        isAutoHideLegend: React.PropTypes.bool,
+        autoHideLegendWidth: React.PropTypes.number
+    }
+
+    static defaultProps = {
+        isAutoHideLegend: true,
+        autoHideLegendWidth: 840
+    };
 
     state = {}
 
@@ -23,8 +34,21 @@ class PolarAreaChart extends React.Component {
         this.chart = this._createChart(ctx);
 
         // TODO: сделать передачу в props данных, на то, ставить ли bind или нет
-        window.addEventListener('resize', this._onResize);
-        window.dispatchEvent(new CustomEvent('resize'));
+        if (this.props.isAutoHideLegend) {
+            window.addEventListener('resize', this._onResize);
+            window.dispatchEvent(new CustomEvent('resize'));
+        }
+    }
+
+    /**
+     * Компонент размаунтился
+     *
+     * @public
+     */
+    componentWillUnmount() {
+        if (this.props.isAutoHideLegend) {
+            window.removeEventListener('resize', this._onResize);
+        }
     }
 
     chart = {}
@@ -39,7 +63,7 @@ class PolarAreaChart extends React.Component {
     _onResize = () => {
         const width = window.innerWidth;
 
-        const isDisplayed = width > 840;
+        const isDisplayed = width > this.props.autoHideLegendWidth;
 
         this.chart.options.legend.display = isDisplayed;
         this.chart.update();

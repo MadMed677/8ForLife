@@ -19,7 +19,8 @@
     "expect": false,
     "spyOn": false,
     "sinon": false,
-    "require": false
+    "require": false,
+    "CustomEvent": false
   },
 
   "installedESLint": true,
