@@ -50,8 +50,8 @@ describe('<PolarAreaChart />', () => {
     xit('если в компонент был передан ключ "isAutoHideLegend: false", то функция _onResize не вызывалась', () => {
         sinon.stub(PolarAreaChart.prototype, '_createChart', () => chart);
 
-        mount(<PolarAreaChart isAutoHideLegend={ false } />);
         sinon.spy(PolarAreaChart.prototype, '_onResize');
+        mount(<PolarAreaChart isAutoHideLegend={ false } />);
         // expect(PolarAreaChart.prototype._onResize.calledOnce).to.equal(false);
         expect(true).to.equal(true);
 
