@@ -53,7 +53,6 @@ describe('<PolarAreaChart />', () => {
         sinon.spy(PolarAreaChart.prototype, '_onResize');
         mount(<PolarAreaChart isAutoHideLegend={ false } />);
         // expect(PolarAreaChart.prototype._onResize.calledOnce).to.equal(false);
-        expect(true).to.equal(true);
 
         PolarAreaChart.prototype._onResize.restore();
         PolarAreaChart.prototype._createChart.restore();
