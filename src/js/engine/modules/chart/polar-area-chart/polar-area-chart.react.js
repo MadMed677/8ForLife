@@ -1,6 +1,8 @@
-import React            from 'react';
-import Chart            from 'chart.js';
+import React                from 'react';
+import Chart                from 'chart.js';
+import { arrayConversion }  from '../helpers';
 
+// Дефолтные данные: шрифт по умолчанию
 Chart.defaults.global.defaultFontFamily = "'PT Sans'";
 
 /**
@@ -14,15 +16,30 @@ Chart.defaults.global.defaultFontFamily = "'PT Sans'";
 class PolarAreaChart extends React.Component {
     static propTypes = {
         isAutoHideLegend: React.PropTypes.bool,
-        autoHideLegendWidth: React.PropTypes.number
-    }
+        autoHideLegendWidth: React.PropTypes.number,
+        data: React.PropTypes.array
+    };
 
     static defaultProps = {
         isAutoHideLegend: true,
-        autoHideLegendWidth: 840
+        autoHideLegendWidth: 840,
+        data: [
+            {
+                categoryName: 'Здоровье и спорт',
+                value: 5
+            },
+            {
+                categoryName: 'Друзья и окружение',
+                value: 7
+            },
+            {
+                categoryName: 'Отношения',
+                value: 3
+            }
+        ]
     };
 
-    state = {}
+    state = {};
 
     /**
      * Компонент замаунтился
@@ -33,7 +50,6 @@ class PolarAreaChart extends React.Component {
         const ctx = document.getElementById('polar-area-chart');
         this.chart = this._createChart(ctx);
 
-        // TODO: сделать передачу в props данных, на то, ставить ли bind или нет
         if (this.props.isAutoHideLegend) {
             window.addEventListener('resize', this._onResize);
             window.dispatchEvent(new CustomEvent('resize'));
@@ -51,12 +67,12 @@ class PolarAreaChart extends React.Component {
         }
     }
 
-    chart = {}
+    chart = {};
 
     /**
      * Вызывается, когда пользователь изменяет рамер экрана
      *
-     * @param {Object} [resize] - объект event
+     * @param {Object} resize - объект event
      *
      * @private
      */
@@ -67,7 +83,7 @@ class PolarAreaChart extends React.Component {
 
         this.chart.options.legend.display = isDisplayed;
         this.chart.update();
-    }
+    };
 
     /**
      * Метод для создания графика
@@ -78,14 +94,16 @@ class PolarAreaChart extends React.Component {
      * @private
      */
     _createChart(ctx) {
+        const data = arrayConversion(this.props.data);
+
         return new Chart(ctx, {
             type: 'polarArea',
             data: {
-                labels: require('./../labels').default,
+                labels: data.labels,
                 datasets: [
                     {
                         label: 'Points',
-                        data: [3, 5, 8, 9, 6, 3, 7, 9],
+                        data: data.data,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
