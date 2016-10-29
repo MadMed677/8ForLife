@@ -1,6 +1,6 @@
 import React                from 'react';
 import Chart                from 'chart.js';
-import { arrayConversion }  from '../helpers';
+import { arrayConversion }  from '../helpers/helpers';
 
 // Дефолтные данные: шрифт по умолчанию
 Chart.defaults.global.defaultFontFamily = "'PT Sans'";
