@@ -36,34 +36,6 @@ class Dashboard extends React.Component {
     };
 
     /**
-     * Компонент замаунтился
-     *
-     * @public
-     */
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                data: [
-                    {
-                        categoryName: 'Здоровье и спорт',
-                        value: 5
-                    },
-                    {
-                        categoryName: 'Друзья и окружение',
-                        value: 3
-                    },
-                    {
-                        categoryName: 'Отношения',
-                        value: 6
-                    }
-                ]
-            });
-
-            console.log('set state');
-        }, 1000);
-    }
-
-    /**
      * Метод для отрисовки компонента
      *
      * @return {JSX}
