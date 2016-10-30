@@ -98,7 +98,7 @@ class PolarAreaChart extends React.Component {
      * @param {Object} ctx - контекст, где будет отрисован график
      *
      * @return {Chart} инстанс Chart'а
-     * @private
+     * @public
      */
     createChart(ctx) {
         const data = arrayConversion(this.props.data);
