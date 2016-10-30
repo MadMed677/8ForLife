@@ -1,1 +1,1 @@
-# 8ForLife
+# 8ForLife [![travis build](https://img.shields.io/travis/MadMed677/8ForLife.svg)](https://travis-ci.org/MadMed677/8ForLife) [![codecov coverage](https://img.shields.io/codecov/c/github/MadMed677/8ForLife/dev.svg)](https://codecov.io/gh/MadMed677/8ForLife)
