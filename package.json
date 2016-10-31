@@ -74,10 +74,5 @@
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
     "webpack-strip": "0.1.0"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run check-coverage"
-    }
   }
 }
