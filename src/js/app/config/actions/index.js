@@ -1,9 +1,5 @@
-export const increment = index => ({
-    type: 'INCREMENT',
-    index: index
-});
+import chartData            from '../../modules/dashboard/actions';
 
-export const decrement = index => ({
-    type: 'DECREMENT',
-    index: index
-});
+export default {
+    ...chartData
+};

@@ -6,7 +6,7 @@ import { arrayConversion }  from '../helpers/helpers';
 Chart.defaults.global.defaultFontFamily = "'PT Sans'";
 
 /**
- * React Class PolarAreaChart
+ * React Presentational Component - PolarAreaChart
  *
  * @param {Boolean} [isAutoHideLegend] - true, если легенду надо автоматически скрывать
  * @param {Number} [autoHideLegendWidth] - ширина, при которой надо скрывать легенду
@@ -18,13 +18,15 @@ class PolarAreaChart extends React.Component {
     static propTypes = {
         isAutoHideLegend: React.PropTypes.bool,
         autoHideLegendWidth: React.PropTypes.number,
-        data: React.PropTypes.array
+        data: React.PropTypes.array,
+        onChartClick: React.PropTypes.func
     };
 
     static defaultProps = {
         isAutoHideLegend: true,
         autoHideLegendWidth: 840,
-        data: []
+        data: [],
+        onChartClick: () => {}
     };
 
     state = {};
@@ -141,6 +143,7 @@ class PolarAreaChart extends React.Component {
                 ]
             },
             options: {
+                onClick: (e, chartElem) => this.props.onChartClick(e, chartElem[0]),
                 title: {
                     display: false
                 },

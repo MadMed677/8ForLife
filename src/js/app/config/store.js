@@ -5,7 +5,21 @@ import { browserHistory }       from 'react-router';
 import rootReducer              from './reducers';
 
 const defaultState = {
-    posts: []
+    singleChartData: {},
+    allChartData: [
+        {
+            categoryName: 'Здоровье и спорт',
+            value: 9
+        },
+        {
+            categoryName: 'Друзья и окружение',
+            value: 8
+        },
+        {
+            categoryName: 'Отношения',
+            value: 7
+        }
+    ]
 };
 
 const store = createStore(rootReducer, defaultState);
