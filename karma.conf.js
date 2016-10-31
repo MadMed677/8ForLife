@@ -42,15 +42,12 @@ module.exports = function setKarmaConfig(config) {
         },
 
         webpack: {
-
             entry: [
-                'babel-regenerator-runtime',
                 './src/js/app/app.react.js'
             ],
-
             output: {
                 path: path.join(__dirname, 'static/js'),
-                filename: 'app.js',
+                filename: 'main.js',
                 publicPath: '/static/js/'
             },
 

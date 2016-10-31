@@ -57,9 +57,7 @@ class Dashboard extends React.Component {
      *
      * @public
      */
-    onChartClicked = (e, chartElem) => {
-        console.log('chartElem: ', chartElem);
-    };
+    onChartClicked = (e, chartElem) => {};
 
     /**
      * Метод для отрисовки компонента
