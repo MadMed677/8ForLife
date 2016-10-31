@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 /**
- * React Class Dashboard.
+ * React Container Component - Dashboard.
  * Класс отвечает за главный компонент на /dashboard
  *
  * @class
