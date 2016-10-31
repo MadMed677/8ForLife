@@ -48,6 +48,8 @@ class PolarAreaChart extends React.Component {
      * В компонент передали новые props'ы
      *
      * @param {Object} nextProps - новые props'ы
+     *
+     * @public
      */
     componentWillReceiveProps(nextProps) {
         this.updateChart(nextProps.data);
