@@ -6,7 +6,7 @@ import { arrayConversion }  from '../helpers/helpers';
 Chart.defaults.global.defaultFontFamily = "'PT Sans'";
 
 /**
- * React Class PolarAreaChart
+ * React Presentational Component - PolarAreaChart
  *
  * @param {Boolean} [isAutoHideLegend] - true, если легенду надо автоматически скрывать
  * @param {Number} [autoHideLegendWidth] - ширина, при которой надо скрывать легенду
