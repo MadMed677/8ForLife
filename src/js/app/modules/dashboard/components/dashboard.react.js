@@ -1,7 +1,5 @@
 import React            from 'react';
 import {
-    BarChart,
-    RadarChart,
     PolarAreaChart
 }                       from 'chart/index';
 
@@ -34,6 +32,13 @@ class Dashboard extends React.Component {
             }
         ]
     };
+
+    /**
+     * Компонент замаунтился
+     *
+     * @public
+     */
+    componentDidMount() {}
 
     /**
      * Метод для отрисовки компонента
