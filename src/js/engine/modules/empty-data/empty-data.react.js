@@ -4,17 +4,21 @@ import { If, Then, Else }   from 'react-if';
 import './empty-data.post.css';
 
 /**
- * React Class EmptyData
+ * React Presentational Component - EmptyData
+ *
+ * @param {Boolean} [fetching] - данные загружаются
  *
  * @class
  */
 class EmptyData extends React.Component {
     static propTypes = {
-        fetching: React.PropTypes.bool
+        fetching: React.PropTypes.bool,
+        text: React.PropTypes.string
     }
 
     static defaultProps = {
-        fetching: false
+        fetching: false,
+        text: 'Нет данных'
     };
 
     state = {}
@@ -33,7 +37,7 @@ class EmptyData extends React.Component {
                         <div className="spinner" />
                     </Then>
                     <Else>{() =>
-                        <p>Нет данных</p>
+                        <p>{ this.props.text }</p>
                     }</Else>
                 </If>
             </div>
