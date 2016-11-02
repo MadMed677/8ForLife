@@ -5,7 +5,7 @@ import CONSTANTS            from '../constants';
  *
  * @return {Object} action
  */
-export const getAllData = () => ({
+export const getAllChartData = () => ({
     type: CONSTANTS.GET_ALL_DATA
 });
 
@@ -16,7 +16,7 @@ export const getAllData = () => ({
  *
  * @return {Object} action
  */
-export const getSingleData = id => ({
+export const getSingleChartData = id => ({
     type: CONSTANTS.GET_SINGLE_DATA,
     payload: { id: id }
 });

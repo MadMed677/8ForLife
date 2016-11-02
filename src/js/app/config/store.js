@@ -1,8 +1,13 @@
-import { createStore }          from 'redux';
+import { createStore, applyMiddleware }          from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory }       from 'react-router';
 
 import rootReducer              from './reducers';
+
+const ping = store => next => action => {
+    console.log(`Тип события: ${action.type}, доп.данные: ${action.payload}`);
+    return next(action);
+};
 
 const defaultState = {
     singleChartData: {},
@@ -22,7 +27,7 @@ const defaultState = {
     ]
 };
 
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState, applyMiddleware(ping));
 export const history = syncHistoryWithStore(browserHistory, store);
 
 if (module.hot) {

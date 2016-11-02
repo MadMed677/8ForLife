@@ -32,13 +32,6 @@ class Dashboard extends React.Component {
         singleChartData: React.PropTypes.object
     };
 
-    static defaultProps = {
-        getAllChartData: () => {},
-        getSingleChartData: () => {},
-        allChartData: [],
-        singleChartData: {}
-    };
-
     state = {};
 
     /**
@@ -56,7 +49,10 @@ class Dashboard extends React.Component {
      *
      * @public
      */
-    onChartClicked = (e, chartElem) => {};
+    onChartClicked = (e, chartElem) => {
+        console.log('clicked');
+        this.props.getSingleChartData(chartElem);
+    };
 
     /**
      * Метод для отрисовки компонента
