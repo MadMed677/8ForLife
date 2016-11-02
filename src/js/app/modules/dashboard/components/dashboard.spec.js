@@ -36,24 +36,23 @@ describe('<Dashboard />', () => {
     });
 
     describe('# reducers', () => {
-        const allDataReducer = require('../reducers/all-data').default;
+        const allChartDataReducer = require('../reducers/all-data').default;
         const singleDataReducer = require('../reducers/single-data').default;
 
-        // TODO: актуализировать тесты, когда появятся middleware
-        // на данный момент это тесты - пустышки, так как reducer'ы, на данный момент ничего не делают.
-        // В будущем, будет реализованы middleware, и надо будет мокать их и проверять в самом reducer'е
-        it('получение всех данных для отрисовки графика', () => {
-            const initialState = [];
-            const newState = allDataReducer(initialState, ACTIONS.getAllData());
+        xdescribe('all-data', () => {
+            it('получение всех данных для отрисовки графика', () => {
+                const initialState = { data: [], fetching: false };
+                const newState = allChartDataReducer(initialState, ACTIONS.getAllChartData());
 
-            expect(newState).to.eql([]);
-        });
+                expect(newState).to.eql([]);
+            });
 
-        it('получение подробных данных, по выбранной категории', () => {
-            const initialState = {};
-            const newState = singleDataReducer(initialState, ACTIONS.getSingleData());
+            it('получение подробных данных, по выбранной категории', () => {
+                const initialState = {};
+                const newState = singleDataReducer(initialState, ACTIONS.getSingleChartData());
 
-            expect(newState).to.eql({});
+                expect(newState).to.eql({});
+            });
         });
     });
 });
