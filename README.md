@@ -41,7 +41,7 @@
 - Webpack
 
 
-> Еще не нет
+> Еще нет
 > ### Backend
 > - NodeJS
 > - KoaJS
