@@ -67,7 +67,7 @@ module.exports = function setKarmaConfig(config) {
                             env: {
                                 test: {
                                     plugins: [
-                                        ['__coverage__', { ignore: '*.spec.*' }]
+                                        ['__coverage__', { ignore: ['*.spec.*', '*.ex.js'] }]
                                     ]
                                 }
                             }
