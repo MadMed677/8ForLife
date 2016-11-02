@@ -1,13 +1,11 @@
-import { createStore, applyMiddleware }          from 'redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-import { browserHistory }       from 'react-router';
+import { createStore, applyMiddleware }     from 'redux';
+import { syncHistoryWithStore }             from 'react-router-redux';
+import { browserHistory }                   from 'react-router';
+import createLogger                         from 'redux-logger';
 
-import rootReducer              from './reducers';
+import rootReducer                          from './reducers';
 
-const ping = store => next => action => {
-    console.log(`Тип события: ${action.type}, доп.данные: ${action.payload}`);
-    return next(action);
-};
+const logger = createLogger();
 
 const defaultState = {
     singleChartData: {},
@@ -27,7 +25,7 @@ const defaultState = {
     ]
 };
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(ping));
+const store = createStore(rootReducer, defaultState, applyMiddleware(logger));
 export const history = syncHistoryWithStore(browserHistory, store);
 
 if (module.hot) {
