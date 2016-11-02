@@ -70,6 +70,8 @@ class Dashboard extends React.Component {
      * @public
      */
     render() {
+        const { allChartData } = this.props;
+
         return (
             <div className="container">
                 <PageHeader>
@@ -78,7 +80,7 @@ class Dashboard extends React.Component {
 
                 <div className="row">
                     <div className="col-md-8">
-                        <PolarAreaChart data={ this.props.allChartData.data } onChartClick={ this.onChartClicked } />
+                        <PolarAreaChart data={ allChartData.data } onChartClick={ this.onChartClicked } fetching={ allChartData.fetching } />
                     </div>
                     <div className="col-md-4">
                         <h3>Statistic</h3>

@@ -6,7 +6,7 @@ const allChartData = (state = { data: [], fetching: false }, action) => {
             return { data: action.payload, fetching: action.fetching };
 
         case CONST.GET_ALL_DATA_SUCCESS:
-            return { data: action.payload, fetching: state.fetching };
+            return { data: action.payload, fetching: action.fetching };
 
         default:
             return state;

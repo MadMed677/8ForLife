@@ -11,6 +11,7 @@ Chart.defaults.global.defaultFontFamily = "'PT Sans'";
  * @param {Boolean} [isAutoHideLegend] - true, если легенду надо автоматически скрывать
  * @param {Number} [autoHideLegendWidth] - ширина, при которой надо скрывать легенду
  * @param {Array} data - данные для отрисовки графика
+ * @param {Boolean} fetching - идет ли в данный момент, запрос к backend'у
  *
  * @class
  */
@@ -19,14 +20,16 @@ class PolarAreaChart extends React.Component {
         isAutoHideLegend: React.PropTypes.bool,
         autoHideLegendWidth: React.PropTypes.number,
         data: React.PropTypes.array,
-        onChartClick: React.PropTypes.func
+        onChartClick: React.PropTypes.func,
+        fetching: React.PropTypes.bool
     };
 
     static defaultProps = {
         isAutoHideLegend: true,
         autoHideLegendWidth: 840,
         data: [],
-        onChartClick: () => {}
+        onChartClick: () => {},
+        fetching: false
     };
 
     state = {};
