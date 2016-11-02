@@ -2,11 +2,13 @@ import React                    from 'react';
 import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
 import _                        from 'lodash';
+import { If, Then, Else }       from 'react-if';
 import actionCreators           from 'actions';
 import dashboardActions         from '../actions';
 import {
     PolarAreaChart
 }                               from 'chart/index';
+import EmptyData                from 'empty-data/empty-data.react';
 
 import PageHeader               from 'page-header/page-header.react';
 
@@ -35,7 +37,10 @@ class Dashboard extends React.Component {
     static defaultProps = {
         getAllChartData: () => {},
         getSingleChartData: () => {},
-        allChartData: {},
+        allChartData: {
+            data: [],
+            fetching: false
+        },
         singleChartData: {}
     };
 
@@ -51,6 +56,15 @@ class Dashboard extends React.Component {
     }
 
     /**
+     * Компонент получил новые props'ы
+     *
+     * @public
+     */
+    componentWillReceiveProps(nextProps) {
+        console.log('nextProps: ', nextProps);
+    }
+
+    /**
      * Пользователь нажал на элемент графика
      *
      * @param {Event} e - event
@@ -59,7 +73,6 @@ class Dashboard extends React.Component {
      * @public
      */
     onChartClicked = (e, chartElem) => {
-        console.log('clicked');
         this.props.getSingleChartData(chartElem);
     };
 
@@ -71,6 +84,7 @@ class Dashboard extends React.Component {
      */
     render() {
         const { allChartData } = this.props;
+        const { data = [] } = allChartData;
 
         return (
             <div className="container">
@@ -80,7 +94,14 @@ class Dashboard extends React.Component {
 
                 <div className="row">
                     <div className="col-md-8">
-                        <PolarAreaChart data={ allChartData.data } onChartClick={ this.onChartClicked } fetching={ allChartData.fetching } />
+                        <If condition={ data.length > 0 }>
+                            <Then>
+                                <PolarAreaChart data={ allChartData.data } onChartClick={ this.onChartClicked } fetching={ allChartData.fetching } />
+                            </Then>
+                            <Else>{() =>
+                                <EmptyData fetching={ allChartData.fetching } />
+                            }</Else>
+                        </If>
                     </div>
                     <div className="col-md-4">
                         <h3>Statistic</h3>
