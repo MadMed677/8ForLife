@@ -12,6 +12,7 @@
 | isAutoHideLegend    | Boolean | true                  | если легенду надо автоматически скрывать  |
 | autoHideLegendWidth | Number  | 840                   | ширина, при которой надо скрывать легенду |
 | data                | Array   | []                    | данные для отрисовки графика              |
+| fetching            | Boolean | false                 | идет ли ассинхронный запрос за данными    |
 
 ## Использование
 

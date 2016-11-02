@@ -29,7 +29,7 @@ const config = {
                 loaders: [
                     'style-loader',
                     'css-loader?importLoaders=1',
-                    'postcss-loader'
+                    'postcss-loader?sourceMap=inline'
                 ]
             }
         ]
