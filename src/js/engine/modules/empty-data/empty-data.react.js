@@ -14,14 +14,14 @@ class EmptyData extends React.Component {
     static propTypes = {
         fetching: React.PropTypes.bool,
         text: React.PropTypes.string
-    }
+    };
 
     static defaultProps = {
         fetching: false,
         text: 'Нет данных'
     };
 
-    state = {}
+    state = {};
 
     /**
      * Метод для отрисовки компонента
@@ -34,10 +34,10 @@ class EmptyData extends React.Component {
             <div className="empty-data">
                 <If condition={ this.props.fetching }>
                     <Then>
-                        <div className="spinner" />
+                        <div className="empty-data__spinner spinner" />
                     </Then>
                     <Else>{() =>
-                        <p>{ this.props.text }</p>
+                        <p className="empty-data__text">{ this.props.text }</p>
                     }</Else>
                 </If>
             </div>
