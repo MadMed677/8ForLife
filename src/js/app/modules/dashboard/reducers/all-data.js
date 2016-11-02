@@ -1,12 +1,20 @@
 import CONST                from '../constants';
 
-const allChartData = (state = { data: [], fetching: false }, action) => {
+const initialState = {
+    data: [],
+    fetching: false
+};
+
+const allChartData = (state = initialState, action) => {
     switch (action.type) {
         case CONST.GET_ALL_DATA_REQUEST:
-            return { data: action.payload, fetching: action.fetching };
+            return state;
 
         case CONST.GET_ALL_DATA_SUCCESS:
-            return { data: action.payload, fetching: action.fetching };
+            return {
+                data: action.payload,
+                fetching: action.fetching
+            };
 
         default:
             return state;

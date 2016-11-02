@@ -4,7 +4,6 @@ import _            from 'lodash';
 import { shallow }  from 'enzyme';
 import Dashboard    from './dashboard.react';
 import CONST        from '../constants';
-import ACTIONS      from '../actions';
 
 describe('<Dashboard />', () => {
     describe('# компонент', () => {
@@ -36,22 +35,50 @@ describe('<Dashboard />', () => {
     });
 
     describe('# reducers', () => {
-        const allChartDataReducer = require('../reducers/all-data').default;
-        const singleDataReducer = require('../reducers/single-data').default;
+        describe('all-data', () => {
+            const allChartDataReducer = require('../reducers/all-data').default;
+            let initialState = null;
 
-        xdescribe('all-data', () => {
-            it('получение всех данных для отрисовки графика', () => {
-                const initialState = { data: [], fetching: false };
-                const newState = allChartDataReducer(initialState, ACTIONS.getAllChartData());
-
-                expect(newState).to.eql([]);
+            beforeEach(() => {
+                initialState = {
+                    data: [],
+                    fetching: false
+                };
             });
 
-            it('получение подробных данных, по выбранной категории', () => {
-                const initialState = {};
-                const newState = singleDataReducer(initialState, ACTIONS.getSingleChartData());
+            it('должен вернуть текущий state, если action не передан', () => {
+                const newState = allChartDataReducer(initialState, {});
 
-                expect(newState).to.eql({});
+                expect(newState).to.deep.equal(initialState);
+            });
+
+            it('должен вернуть initialState, если отправлен запрос на получение данных', () => {
+                const action = {
+                    type: CONST.GET_ALL_DATA_REQUEST
+                };
+                const newState = allChartDataReducer(initialState, action);
+
+                expect(newState).to.deep.equal(initialState);
+            });
+
+            it('должен вернуть данные, если запрос успешно отработал', () => {
+                const action = {
+                    type: CONST.GET_ALL_DATA_SUCCESS,
+                    payload: [
+                        { categoryName: 'Здоровье и спорт', value: 9 },
+                        { categoryName: 'Random text', value: 3 }
+                    ],
+                    fetching: true
+                };
+                const newState = allChartDataReducer(initialState, action);
+
+                expect(newState).to.deep.equal({
+                    data: [
+                        { categoryName: 'Здоровье и спорт', value: 9 },
+                        { categoryName: 'Random text', value: 3 }
+                    ],
+                    fetching: true
+                });
             });
         });
     });

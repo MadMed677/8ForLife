@@ -56,15 +56,6 @@ class Dashboard extends React.Component {
     }
 
     /**
-     * Компонент получил новые props'ы
-     *
-     * @public
-     */
-    componentWillReceiveProps(nextProps) {
-        console.log('nextProps: ', nextProps);
-    }
-
-    /**
      * Пользователь нажал на элемент графика
      *
      * @param {Event} e - event
