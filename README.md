@@ -64,21 +64,27 @@
 ## Установка
 
 ### Frontend
-- npm i
-- npm start
+```
+$ npm i
+$ npm start
+```
 
 На данный момент, сборка происходит только в development режиме. То есть запускается сервер на `localhost:1111`.
 Сборка конечного билда, пока что, отсутствует.
 
 ### Frontend tests
-- npm i
-- npm t
+```
+$ npm i
+$ npm t
+```
 
 Запускает тесты в karma, по умолчанию, под PhantomJS. В настройках `karma.config.js`, можно поставить другие браузеры.
 
 ### Frontend coverage
-- npm i
-- npm run check-coverage
+```
+$ npm i
+$ npm run check-coverage
+```
 
 Проверяем код на покрытие тестами. В настройках `package.json` можно их задать.
 На данный момент, настройки такие:
