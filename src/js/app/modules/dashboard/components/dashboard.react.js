@@ -15,9 +15,8 @@ const mapStateToProps = state => ({
     singleChartData: state.singleChartData
 });
 
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators(_.pick(actionCreators, Object.keys(dashboardActions)), dispatch);
-};
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(_.pick(actionCreators, Object.keys(dashboardActions)), dispatch);
 
 /**
  * React Container Component - Dashboard.
