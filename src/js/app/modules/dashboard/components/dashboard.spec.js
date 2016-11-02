@@ -81,5 +81,56 @@ describe('<Dashboard />', () => {
                 });
             });
         });
+
+        describe('single-data', () => {
+            const singleDataReducer = require('../reducers/single-data').default;
+            let initialState = null;
+
+            beforeEach(() => {
+                initialState = {
+                    data: [],
+                    fetching: false
+                };
+            });
+
+            it('должен вернуть текущий state, если action не передан', () => {
+                const newState = singleDataReducer(initialState, {});
+
+                expect(newState).to.deep.equal(initialState);
+            });
+
+            it('должен вернуть initialState, если отправлен запрос на получение данных', () => {
+                const action = {
+                    type: CONST.GET_SINGLE_DATA_REQUEST
+                };
+                const newState = singleDataReducer(initialState, action);
+
+                expect(newState).to.deep.equal(initialState);
+            });
+
+            it('должен вернуть данные, если запрос успешно отработал', () => {
+                const action = {
+                    type: CONST.GET_SINGLE_DATA_SUCCESS,
+                    payload: {
+                        categoryName: 'Здоровье и спорт',
+                        value: 9,
+                        priority: 5,
+                        todos: 7
+                    },
+                    fetching: true
+                };
+                const newState = singleDataReducer(initialState, action);
+
+                expect(newState).to.deep.equal({
+                    data: {
+                        categoryName: 'Здоровье и спорт',
+                        value: 9,
+                        priority: 5,
+                        todos: 7
+                    },
+                    fetching: true
+                });
+            });
+        });
     });
 });
