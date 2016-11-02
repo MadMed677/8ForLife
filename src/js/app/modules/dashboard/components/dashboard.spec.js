@@ -1,7 +1,7 @@
 import React        from 'react';
 import { Provider } from 'react-redux';
 import _            from 'lodash';
-import { shallow }  from 'enzyme';
+import { shallow, mount }  from 'enzyme';
 import Dashboard    from './dashboard.react';
 import CONST        from '../constants';
 
@@ -15,6 +15,32 @@ describe('<Dashboard />', () => {
         });
 
         const store = storeFake();
+
+        it('компонент успешно замаунтился', () => {
+            sinon.spy(Dashboard.prototype, 'render');
+
+            mount(
+                <Provider store={ store }>
+                    <Dashboard />
+                </Provider>
+            );
+            expect(Dashboard.prototype.render.calledOnce).to.equal(true);
+
+            Dashboard.prototype.render.restore();
+        });
+
+        it('компонент успешно вызвал "getAllChartData"', () => {
+            sinon.spy(Dashboard.prototype, 'componentDidMount');
+
+            mount(
+                <Provider store={ store }>
+                    <Dashboard />
+                </Provider>
+            );
+            expect(Dashboard.prototype.componentDidMount.calledOnce).to.equal(true);
+
+            Dashboard.prototype.componentDidMount.restore();
+        });
 
         xit('компонент содержит "container"', () => {
             const wrapper = shallow(
