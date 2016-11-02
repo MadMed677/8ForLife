@@ -28,8 +28,15 @@ class Dashboard extends React.Component {
     static propTypes = {
         getAllChartData: React.PropTypes.func,
         getSingleChartData: React.PropTypes.func,
-        allChartData: React.PropTypes.array,
+        allChartData: React.PropTypes.object,
         singleChartData: React.PropTypes.object
+    };
+
+    static defaultProps = {
+        getAllChartData: () => {},
+        getSingleChartData: () => {},
+        allChartData: {},
+        singleChartData: {}
     };
 
     state = {};
@@ -39,7 +46,9 @@ class Dashboard extends React.Component {
      *
      * @public
      */
-    componentDidMount() {}
+    componentDidMount() {
+        this.props.getAllChartData();
+    }
 
     /**
      * Пользователь нажал на элемент графика
@@ -69,7 +78,7 @@ class Dashboard extends React.Component {
 
                 <div className="row">
                     <div className="col-md-8">
-                        <PolarAreaChart data={ this.props.allChartData } onChartClick={ this.onChartClicked } />
+                        <PolarAreaChart data={ this.props.allChartData.data } onChartClick={ this.onChartClicked } />
                     </div>
                     <div className="col-md-4">
                         <h3>Statistic</h3>

@@ -2,6 +2,7 @@ import { createStore, applyMiddleware }     from 'redux';
 import { syncHistoryWithStore }             from 'react-router-redux';
 import { browserHistory }                   from 'react-router';
 import createLogger                         from 'redux-logger';
+import thunk                                from 'redux-thunk';
 
 import rootReducer                          from './reducers';
 
@@ -9,23 +10,10 @@ const logger = createLogger();
 
 const defaultState = {
     singleChartData: {},
-    allChartData: [
-        {
-            categoryName: 'Здоровье и спорт',
-            value: 9
-        },
-        {
-            categoryName: 'Друзья и окружение',
-            value: 8
-        },
-        {
-            categoryName: 'Отношения',
-            value: 7
-        }
-    ]
+    allChartData: {}
 };
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(logger));
+const store = createStore(rootReducer, defaultState, applyMiddleware(thunk, logger));
 export const history = syncHistoryWithStore(browserHistory, store);
 
 if (module.hot) {

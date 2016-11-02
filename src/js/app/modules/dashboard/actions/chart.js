@@ -5,9 +5,34 @@ import CONSTANTS            from '../constants';
  *
  * @return {Object} action
  */
-export const getAllChartData = () => ({
-    type: CONSTANTS.GET_ALL_DATA
-});
+export const getAllChartData = () => dispatch => {
+    dispatch({
+        type: CONSTANTS.GET_ALL_DATA_REQUEST,
+        payload: [],
+        fetching: true
+    });
+
+    setTimeout(() => {
+        dispatch({
+            type: CONSTANTS.GET_ALL_DATA_SUCCESS,
+            payload: [
+                {
+                    categoryName: 'Здоровье и спорт',
+                    value: 9
+                },
+                {
+                    categoryName: 'Друзья и окружение',
+                    value: 8
+                },
+                {
+                    categoryName: 'Отношения',
+                    value: 7
+                }
+            ],
+            fetching: false
+        });
+    }, 1000);
+};
 
 /**
  * Экшен, по получению одного из элементов chart'а
