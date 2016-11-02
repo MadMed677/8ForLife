@@ -1,4 +1,4 @@
-# 8ForLife [![travis build](https://img.shields.io/travis/MadMed677/8ForLife.svg)](https://travis-ci.org/MadMed677/8ForLife) [![codecov coverage](https://img.shields.io/codecov/c/github/MadMed677/8ForLife/dev.svg)](https://codecov.io/gh/MadMed677/8ForLife) ![node release](https://img.shields.io/github/release/MadMed677/8ForLife.svg) ![github tags](https://img.shields.io/github/tag/MadMed677/8ForLife.svg)
+# 8ForLife [![travis build](https://img.shields.io/travis/MadMed677/8ForLife.svg?style=flat-square)](https://travis-ci.org/MadMed677/8ForLife) [![codecov coverage](https://img.shields.io/codecov/c/github/MadMed677/8ForLife/dev.svg?style=flat-square)](https://codecov.io/gh/MadMed677/8ForLife) ![node release](https://img.shields.io/github/release/MadMed677/8ForLife.svg?style=flat-square) ![github tags](https://img.shields.io/github/tag/MadMed677/8ForLife.svg?style=flat-square)
 
 ## О чем проект
 
