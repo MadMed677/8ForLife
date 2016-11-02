@@ -1,11 +1,4 @@
 import React                    from 'react';
-import { bindActionCreators }   from 'redux';
-import { connect }              from 'react-redux';
-import * as actionCreators      from './config/actions';
-
-const mapStateToProps = state => ({ ...state });
-
-const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
 /**
  * React Class Root. Самый базовый класс. Точка входа.
@@ -26,6 +19,4 @@ class Root extends React.Component {
     }
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(Root);
-
-export default App;
+export default Root;

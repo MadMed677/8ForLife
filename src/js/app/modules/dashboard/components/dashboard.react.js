@@ -1,37 +1,46 @@
-import React            from 'react';
+import React                    from 'react';
+import { bindActionCreators }   from 'redux';
+import { connect }              from 'react-redux';
+import _                        from 'lodash';
+import actionCreators           from 'actions';
+import dashboardActions         from '../actions';
 import {
     PolarAreaChart
-}                       from 'chart/index';
+}                               from 'chart/index';
 
-import PageHeader       from 'page-header/page-header.react';
+import PageHeader               from 'page-header/page-header.react';
+
+const mapStateToProps = state => ({
+    allChartData: state.allChartData,
+    singleChartData: state.singleChartData
+});
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators(_.pick(actionCreators, Object.keys(dashboardActions)), dispatch);
+};
 
 /**
- * React Class Dashboard.
+ * React Container Component - Dashboard.
  * Класс отвечает за главный компонент на /dashboard
  *
  * @class
  */
 class Dashboard extends React.Component {
     static propTypes = {
-
+        getAllChartData: React.PropTypes.func,
+        getSingleChartData: React.PropTypes.func,
+        allChartData: React.PropTypes.array,
+        singleChartData: React.PropTypes.object
     };
 
-    state = {
-        data: [
-            {
-                categoryName: 'Здоровье и спорт',
-                value: 9
-            },
-            {
-                categoryName: 'Друзья и окружение',
-                value: 8
-            },
-            {
-                categoryName: 'Отношения',
-                value: 7
-            }
-        ]
+    static defaultProps = {
+        getAllChartData: () => {},
+        getSingleChartData: () => {},
+        allChartData: [],
+        singleChartData: {}
     };
+
+    state = {};
 
     /**
      * Компонент замаунтился
@@ -39,6 +48,16 @@ class Dashboard extends React.Component {
      * @public
      */
     componentDidMount() {}
+
+    /**
+     * Пользователь нажал на элемент графика
+     *
+     * @param {Event} e - event
+     * @param {Object} chartElem - объект chart'а
+     *
+     * @public
+     */
+    onChartClicked = (e, chartElem) => {};
 
     /**
      * Метод для отрисовки компонента
@@ -55,7 +74,7 @@ class Dashboard extends React.Component {
 
                 <div className="row">
                     <div className="col-md-8">
-                        <PolarAreaChart data={ this.state.data } />
+                        <PolarAreaChart data={ this.props.allChartData } onChartClick={ this.onChartClicked } />
                     </div>
                     <div className="col-md-4">
                         <h3>Statistic</h3>
@@ -66,4 +85,4 @@ class Dashboard extends React.Component {
     }
 }
 
-export default Dashboard;
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
