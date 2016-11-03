@@ -67,7 +67,9 @@ class Dashboard extends React.Component {
      * @public
      */
     onChartClicked = (e, chartElem) => {
-        this.props.getSingleChartData(chartElem);
+        const index = chartElem._index;
+        const elem = this.props.allChartData.data[index];
+        this.props.getSingleChartData(elem);
     };
 
     /**

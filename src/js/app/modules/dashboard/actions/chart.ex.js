@@ -37,14 +37,14 @@ export const getAllChartData = () => dispatch => {
 /**
  * Экшен, по получению одного из элементов chart'а
  *
- * @param {Number} id - id элемента chart'а
+ * @param {Object} elem - элемент chart'а
  *
  * @return {Object} action
  */
-export const getSingleChartData = () => dispatch => {
+export const getSingleChartData = elem => dispatch => {
     dispatch({
         type: CONSTANTS.GET_SINGLE_DATA_REQUEST,
-        payload: [],
+        payload: {},
         fetching: true
     });
 
@@ -52,9 +52,7 @@ export const getSingleChartData = () => dispatch => {
         dispatch({
             type: CONSTANTS.GET_SINGLE_DATA_SUCCESS,
             payload: {
-                categoryName: 'Здоровье и спорт',
-                value: 8,
-                todos: 8
+                ...elem
             },
             fetching: false
         });
