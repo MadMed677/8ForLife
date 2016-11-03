@@ -91,6 +91,8 @@ class Dashboard extends React.Component {
             ? { data: {}, fetching: true }
             : this.props.singleChartData;
 
+        console.log('allChartData: ', this.props.allChartData);
+
         return (
             <div className="container">
                 <PageHeader>

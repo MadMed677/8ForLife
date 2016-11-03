@@ -15,7 +15,7 @@ export const getAllChartData = () => dispatch => {
     setTimeout(() => {
         dispatch({
             type: CONSTANTS.GET_ALL_DATA_SUCCESS,
-            payload: [
+            payload: [] || [
                 {
                     categoryName: 'Здоровье и спорт',
                     value: 9
