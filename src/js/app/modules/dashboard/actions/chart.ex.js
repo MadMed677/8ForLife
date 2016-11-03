@@ -41,10 +41,25 @@ export const getAllChartData = () => dispatch => {
  *
  * @return {Object} action
  */
-export const getSingleChartData = id => ({
-    type: CONSTANTS.GET_SINGLE_DATA,
-    payload: { id: id }
-});
+export const getSingleChartData = () => dispatch => {
+    dispatch({
+        type: CONSTANTS.GET_SINGLE_DATA_REQUEST,
+        payload: [],
+        fetching: true
+    });
+
+    setTimeout(() => {
+        dispatch({
+            type: CONSTANTS.GET_SINGLE_DATA_SUCCESS,
+            payload: {
+                categoryName: 'Здоровье и спорт',
+                value: 8,
+                todos: 8
+            },
+            fetching: false
+        });
+    }, 1000);
+};
 
 /**
  * Экшен, по добавлению новых данных

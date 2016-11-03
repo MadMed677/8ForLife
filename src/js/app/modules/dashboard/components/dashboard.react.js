@@ -41,7 +41,10 @@ class Dashboard extends React.Component {
             data: [],
             fetching: false
         },
-        singleChartData: {}
+        singleChartData: {
+            data: {},
+            fetching: false
+        }
     };
 
     state = {};
@@ -76,6 +79,9 @@ class Dashboard extends React.Component {
     render() {
         const { allChartData } = this.props;
         const { data = [] } = allChartData;
+        const singleChartData = _.isEmpty(this.props.singleChartData)
+            ? { data: {}, fetching: true }
+            : this.props.singleChartData;
 
         return (
             <div className="container">
@@ -96,6 +102,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="col-md-4">
                         <h3>Statistic</h3>
+                        <div>{ singleChartData.data.value }</div>
                     </div>
                 </div>
             </div>
