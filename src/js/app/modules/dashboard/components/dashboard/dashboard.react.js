@@ -11,6 +11,7 @@ import {
 import EmptyData                from 'empty-data/empty-data.react';
 
 import PageHeader               from 'page-header/page-header.react';
+import Information              from '../information/information.react';
 
 const mapStateToProps = state => ({
     allChartData: state.allChartData,
@@ -108,8 +109,7 @@ class Dashboard extends React.Component {
                         </If>
                     </div>
                     <div className="col-md-4">
-                        <h3>Statistic</h3>
-                        <div>{ singleChartData.data.value }</div>
+                        <Information category={ singleChartData } />
                     </div>
                 </div>
             </div>
