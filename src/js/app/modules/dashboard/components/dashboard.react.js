@@ -64,10 +64,15 @@ class Dashboard extends React.Component {
      * @param {Event} e - event
      * @param {Object} chartElem - объект chart'а
      *
+     * @return {Boolean | Undefined}
      * @public
      */
     onChartClicked = (e, chartElem) => {
-        const index = chartElem._index;
+        const index = _.get(chartElem, '_index');
+
+        // Выбрасываем, если клик был совершен не на chart'е
+        if (_.isUndefined(index)) return false;
+
         const elem = this.props.allChartData.data[index];
         this.props.getSingleChartData(elem);
     };
