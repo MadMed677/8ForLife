@@ -4,7 +4,7 @@ import { connect }              from 'react-redux';
 import _                        from 'lodash';
 import { If, Then, Else }       from 'react-if';
 import actionCreators           from 'actions';
-import dashboardActions         from '../actions';
+import dashboardActions         from '../../actions';
 import {
     PolarAreaChart
 }                               from 'chart/index';
