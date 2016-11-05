@@ -107,6 +107,7 @@ class VerticalStepper extends React.Component {
                     secondary={ true }
                     onTouchTap={ this.handleNext }
                     style={{ marginRight: 12 }}
+                    disabled={ !this.props.categories.length }
                 />
                 {step > 0 && (
                     <FlatButton
@@ -129,6 +130,14 @@ class VerticalStepper extends React.Component {
      */
     render() {
         const { finished, stepIndex } = this.state;
+        const bCategories = this.props.categories.map( category =>
+            <div key={`category-name-${category}`}>
+                <div className="row">
+                    <div className="col-sm-8">{ category }</div>
+                    <div className="col-sm-4">value</div>
+                </div>
+            </div>
+        );
 
         return (
             <div>
@@ -155,9 +164,14 @@ class VerticalStepper extends React.Component {
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Create campaign</StepLabel>
+                        <StepLabel>Определите значения для введенных категорий</StepLabel>
                         <StepContent>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur officia perferendis tempore vero?</p>
+                            <p>
+                                Теперь вам нужно будет ввести значения, для введенных категорий.
+                                Оценка должна быть от 1 до 10 баллов. Где 1 - это полностью не удовлетворен тому,
+                                как обстоят дела в этой категории, а 10 - полностью удовлетворен.
+                            </p>
+                            { bCategories }
                             { this.renderStepActions(1) }
                         </StepContent>
                     </Step>

@@ -11,7 +11,7 @@ import VerticalStepper          from '../vertical-stepper/vertical-stepper.react
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators(_.pick(actionCreators, Object.keys(introductionActions)), dispatch);
+    bindActionCreators(pick(actionCreators, Object.keys(introductionActions)), dispatch);
 
 /**
  * React Container Component - Introduction.
