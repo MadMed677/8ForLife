@@ -12,7 +12,6 @@ import EmptyData                from 'empty-data/empty-data.react';
 
 import PageHeader               from 'page-header/page-header.react';
 import Information              from '../information/information.react';
-import InputData                from '../input-data/input-data.react';
 
 const mapStateToProps = state => ({
     allChartData: state.allChartData,
@@ -92,8 +91,6 @@ class Dashboard extends React.Component {
             ? { data: {}, fetching: true }
             : this.props.singleChartData;
 
-        const isShowInput = data.length === 0 && !allChartData.fetching;
-
         return (
             <div className="container">
                 <PageHeader>
@@ -102,19 +99,12 @@ class Dashboard extends React.Component {
 
                 <div className="row">
                     <div className="col-md-8">
-                        <If condition={ isShowInput }>
+                        <If condition={ data.length > 0 }>
                             <Then>
-                                <InputData />
+                                <PolarAreaChart data={ allChartData.data } onChartClick={ this.onChartClicked } fetching={ allChartData.fetching } />
                             </Then>
                             <Else>{() =>
-                                <If condition={ data.length > 0 }>
-                                    <Then>
-                                        <PolarAreaChart data={ allChartData.data } onChartClick={ this.onChartClicked } fetching={ allChartData.fetching } />
-                                    </Then>
-                                    <Else>{() =>
-                                        <EmptyData fetching={ allChartData.fetching } />
-                                    }</Else>
-                                </If>
+                                <EmptyData fetching={ allChartData.fetching } />
                             }</Else>
                         </If>
                     </div>

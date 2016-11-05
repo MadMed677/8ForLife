@@ -101,21 +101,21 @@ class VerticalStepper extends React.Component {
         return (
             <div style={{ margin: '12px 0' }}>
                 <RaisedButton
-                  label={ stepIndex === 2 ? 'Finish' : 'Next' }
-                  disableTouchRipple={ true }
-                  disableFocusRipple={ true }
-                  secondary={ true }
-                  onTouchTap={ this.handleNext }
-                  style={{ marginRight: 12 }}
+                    label={ stepIndex === 2 ? 'Finish' : 'Next' }
+                    disableTouchRipple={ true }
+                    disableFocusRipple={ true }
+                    secondary={ true }
+                    onTouchTap={ this.handleNext }
+                    style={{ marginRight: 12 }}
                 />
                 {step > 0 && (
-                  <FlatButton
-                      label="Back"
-                      disabled={stepIndex === 0}
-                      disableTouchRipple={true}
-                      disableFocusRipple={true}
-                      onTouchTap={this.handlePrev}
-                  />
+                    <FlatButton
+                        label="Back"
+                        disabled={ stepIndex === 0 }
+                        disableTouchRipple={ true }
+                        disableFocusRipple={ true }
+                        onTouchTap={ this.handlePrev }
+                    />
                 )}
             </div>
         );
@@ -141,10 +141,10 @@ class VerticalStepper extends React.Component {
                             <div className="row">
                                 <div className="col-sm-8">
                                     <TextField
-                                      floatingLabelText="Введите название категории"
-                                      fullWidth={ true }
-                                      onChange={ this._changeCategoryName }
-                                      value={ this.state.categoryName }
+                                        floatingLabelText="Введите название категории"
+                                        fullWidth={ true }
+                                        onChange={ this._changeCategoryName }
+                                        value={ this.state.categoryName }
                                     />
                                 </div>
                                 <div className="col-sm-4" style={{ paddingTop: '30px' }}>
@@ -173,13 +173,11 @@ class VerticalStepper extends React.Component {
                     <p style={{margin: '20px 0', textAlign: 'center'}}>
                         <a
                             href="#"
-                            onClick={(event) => {
+                            onClick={event => {
                                 event.preventDefault();
-                                this.setState({stepIndex: 0, finished: false});
+                                this.setState({ stepIndex: 0, finished: false });
                             }}
-                        >
-                            Click here
-                        </a> to reset the example.
+                        >Click here</a> to reset the example.
                     </p>
                 )}
             </div>
