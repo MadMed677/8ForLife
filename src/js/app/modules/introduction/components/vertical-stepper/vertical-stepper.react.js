@@ -7,21 +7,39 @@ import {
 }                       from 'material-ui/Stepper';
 import {
     RaisedButton,
-    FlatButton
+    FlatButton,
+    TextField
 }                       from 'material-ui';
 
+/**
+ * React Presentational Component - VerticalStepper
+ *
+ * @class
+ */
 class VerticalStepper extends React.Component {
     static propTypes = {
 
     };
 
-    stepCount = 3;
-
     state = {
         finished: false,
-        stepIndex: 0
+        stepIndex: 0,
+        categoryName: '',
+        categories: []
     };
 
+    /**
+     * Количество элементов в stepper'е
+     *
+     * @type {number}
+     */
+    stepCount = 3;
+
+    /**
+     * Переход к следующему шагу
+     *
+     * @public
+     */
     handleNext = () => {
         const { stepIndex } = this.state;
 
@@ -31,6 +49,11 @@ class VerticalStepper extends React.Component {
         });
     };
 
+    /**
+     * Вернуться к предыдущему шагу
+     *
+     * @public
+     */
     handlePrev = () => {
         const { stepIndex } = this.state;
 
@@ -39,6 +62,36 @@ class VerticalStepper extends React.Component {
         }
     };
 
+    /**
+     * Изменено название категории
+     *
+     * @param {Event} event - event
+     * @private
+     */
+    _changeCategoryName = event => {
+        this.setState({
+            categoryName: event.target.value
+        });
+    };
+
+    /**
+     * Сохраняет название категории
+     *
+     * @private
+     */
+    _saveCategory = () => {
+        this.setState({
+            categories: [...this.state.categories, this.state.categoryName],
+            categoryName: ''
+        });
+    };
+
+    /**
+     * Отрисовка данных, для каждого шага
+     *
+     * @param {Number} step - номер текущего шага
+     * @returns {JSX}
+     */
     renderStepActions(step) {
         const { stepIndex } = this.state;
 
@@ -48,7 +101,7 @@ class VerticalStepper extends React.Component {
                   label={ stepIndex === 2 ? 'Finish' : 'Next' }
                   disableTouchRipple={ true }
                   disableFocusRipple={ true }
-                  primary={ true }
+                  secondary={ true }
                   onTouchTap={ this.handleNext }
                   style={{ marginRight: 12 }}
                 />
@@ -65,15 +118,36 @@ class VerticalStepper extends React.Component {
         );
     };
 
+    /**
+     * Метод для отрисовки компонента
+     *
+     * @return {JSX}
+     * @public
+     */
     render() {
         const { finished, stepIndex } = this.state;
+
         return (
             <div>
                 <Stepper activeStep={ stepIndex } orientation="vertical">
                     <Step>
-                        <StepLabel>Select campaign</StepLabel>
+                        <StepLabel>Введите названия категорий</StepLabel>
                         <StepContent>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, sit.</p>
+                            <p>Тут вам нужно ввести названия категорий, которые вы хотите отслеживать.</p>
+                            <p>Мы рекомендуем использоватеть 8 категорий</p>
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    <TextField
+                                      floatingLabelText="Введите название категории"
+                                      fullWidth={ true }
+                                      onChange={ this._changeCategoryName }
+                                      value={ this.state.categoryName }
+                                    />
+                                </div>
+                                <div className="col-sm-4" style={{ paddingTop: '30px' }}>
+                                    <RaisedButton label="Сохранить" primary={ true } onTouchTap={ this._saveCategory } />
+                                </div>
+                            </div>
                             { this.renderStepActions(0) }
                         </StepContent>
                     </Step>
