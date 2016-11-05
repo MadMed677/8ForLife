@@ -5,6 +5,9 @@ import actionCreators           from 'actions';
 import { pick }                 from 'lodash';
 import introductionActions      from '../../actions';
 
+import PageHeader               from 'page-header/page-header.react';
+import VerticalStepper          from '../vertical-stepper/vertical-stepper.react';
+
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch =>
@@ -56,7 +59,13 @@ class Introduction extends React.Component {
      */
     render() {
         return (
-            <div>Introduction</div>
+            <div className="container">
+                <PageHeader>
+                    <h2>- Introduction -</h2>
+                </PageHeader>
+
+                <VerticalStepper />
+            </div>
         );
     }
 }
