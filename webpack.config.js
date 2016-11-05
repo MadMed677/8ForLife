@@ -47,9 +47,6 @@ const config = {
     plugins: [
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(NODE_ENV)
-        }),
-        new JSDocPlugin({
-            conf: './jsdoc.conf.json'
         })
     ],
 
@@ -70,6 +67,9 @@ const config = {
 if (process.env.NODE_ENV === 'production') {
     config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
     config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+    config.plugins.push(new JSDocPlugin({
+        conf: './jsdoc.conf.json'
+    }));
     config.module.loaders.push({
         test: /.js$/,
         loader: WebpackStrip.loader('console.log', 'console.error')
