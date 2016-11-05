@@ -18,14 +18,19 @@ import {
  */
 class VerticalStepper extends React.Component {
     static propTypes = {
+        categories: React.PropTypes.array.isRequired,
+        addCategoryName: React.PropTypes.func.isRequired
+    };
 
+    static defaultProps = {
+        categories: [],
+        addCategoryName: () => {}
     };
 
     state = {
         finished: false,
         stepIndex: 0,
-        categoryName: '',
-        categories: []
+        categoryName: ''
     };
 
     /**
@@ -80,10 +85,8 @@ class VerticalStepper extends React.Component {
      * @private
      */
     _saveCategory = () => {
-        this.setState({
-            categories: [...this.state.categories, this.state.categoryName],
-            categoryName: ''
-        });
+        this.props.addCategoryName(this.state.categoryName);
+        this.setState({ categoryName: '' });
     };
 
     /**

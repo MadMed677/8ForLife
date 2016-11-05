@@ -21,26 +21,16 @@ const mapDispatchToProps = dispatch =>
  */
 class Introduction extends React.Component {
     static propTypes = {
-        getAllChartData: React.PropTypes.func,
-        getSingleChartData: React.PropTypes.func,
-        allChartData: React.PropTypes.object,
-        singleChartData: React.PropTypes.object
+
     };
 
     static defaultProps = {
-        getAllChartData: () => {},
-        getSingleChartData: () => {},
-        allChartData: {
-            data: [],
-            fetching: false
-        },
-        singleChartData: {
-            data: {},
-            fetching: false
-        }
+
     };
 
-    state = {};
+    state = {
+        categories: []
+    };
 
     /**
      * Компонент замаунтился
@@ -48,8 +38,20 @@ class Introduction extends React.Component {
      * @public
      */
     componentDidMount() {
-        this.props.getAllChartData();
+
     }
+
+    /**
+     * Добавление новой категории
+     *
+     * @param {String} categoryName - название категории
+     * @private
+     */
+    _onAddCategoryName = categoryName => {
+        this.setState({
+            categories: [...this.state.categories, categoryName]
+        });
+    };
 
     /**
      * Метод для отрисовки компонента
@@ -64,7 +66,7 @@ class Introduction extends React.Component {
                     <h2>- Introduction -</h2>
                 </PageHeader>
 
-                <VerticalStepper />
+                <VerticalStepper categories={ this.state.categories } addCategoryName={ this._onAddCategoryName } />
             </div>
         );
     }
