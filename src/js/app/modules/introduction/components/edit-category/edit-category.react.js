@@ -1,8 +1,5 @@
 import React            from 'react';
 import {
-    List
-}                       from 'material-ui/List';
-import {
     Table,
     TableHeader,
     TableRow,
@@ -11,8 +8,7 @@ import {
 }                       from 'material-ui/Table';
 import {
     RaisedButton,
-    FlatButton,
-    Subheader
+    FlatButton
 }                       from 'material-ui';
 
 import EditCategoryItem from './__item/edit-category__item.react';

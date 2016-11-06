@@ -33,9 +33,9 @@ class EditCategoryItem extends React.Component {
      *
      * @param {Event} event - event
      * @param {Number} value - новое значение для текущей категории
-     * @private
+     * @public
      */
-    _editCategory = (event, value) => {
+    editCategory = (event, value) => {
         this.props.editCategory({
             name: this.props.category.name,
             value: value
@@ -65,7 +65,7 @@ class EditCategoryItem extends React.Component {
                         value={ category.value }
                         min={ 1 }
                         max={ 10 }
-                        onChange={ this._editCategory }
+                        onChange={ this.editCategory }
                     />
                 </TableRowColumn>
             </TableRow>
