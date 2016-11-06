@@ -6,16 +6,11 @@ import {
     StepContent
 }                       from 'material-ui/Stepper';
 import {
-    List,
-    ListItem
-}                       from 'material-ui/List';
-import {
     RaisedButton,
     FlatButton,
-    TextField,
-    Subheader,
-    Slider
+    TextField
 }                       from 'material-ui';
+
 import EditCategory     from '../edit-category/edit-category.react';
 
 /**
@@ -26,17 +21,23 @@ import EditCategory     from '../edit-category/edit-category.react';
  *  2. Ввод значение для категорий
  *  3. Смотрит результат, перенаправляем на /dashboard
  *
+ * @param {Array} categories - массив с категориями
+ * @param {Function} addCategoryName - функция, по добавлению новой категории
+ * @param {Function} editCategory - функция, по редактированию категории
+ *
  * @class
  */
 class VerticalStepper extends React.Component {
     static propTypes = {
         categories: React.PropTypes.array.isRequired,
-        addCategoryName: React.PropTypes.func.isRequired
+        addCategoryName: React.PropTypes.func.isRequired,
+        editCategory: React.PropTypes.func.isRequired
     };
 
     static defaultProps = {
         categories: [],
-        addCategoryName: () => {}
+        addCategoryName: () => {},
+        editCategory: () => {}
     };
 
     state = {
@@ -99,17 +100,6 @@ class VerticalStepper extends React.Component {
     _saveCategory = () => {
         this.props.addCategoryName(this.state.categoryName);
         this.setState({ categoryName: '' });
-    };
-
-    /**
-     * Изменяет значение категории
-     *
-     * @param {Object} newCategory - категория
-     *
-     * @private
-     */
-    _editCategory = (newCategory) => {
-        console.log('newCategory: ', newCategory);
     };
 
     /**
@@ -186,7 +176,7 @@ class VerticalStepper extends React.Component {
                                 categories={ this.props.categories }
                                 handleNext={ this.handleNext }
                                 handlePrev={ this.handlePrev }
-                                editCategory={ this._editCategory }
+                                editCategory={ this.props.editCategory }
                             />
                         </StepContent>
                     </Step>

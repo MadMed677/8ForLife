@@ -20,26 +20,9 @@ const mapDispatchToProps = dispatch =>
  * @class
  */
 class Introduction extends React.Component {
-    static propTypes = {
-
-    };
-
-    static defaultProps = {
-
-    };
-
     state = {
         categories: []
     };
-
-    /**
-     * Компонент замаунтился
-     *
-     * @public
-     */
-    componentDidMount() {
-
-    }
 
     /**
      * Добавление новой категории
@@ -60,6 +43,27 @@ class Introduction extends React.Component {
     };
 
     /**
+     * Изменяет значение категории
+     *
+     * @param {Object} newCategory - категория
+     *
+     * @private
+     */
+    _onEditCategory = newCategory => {
+        const index = this.state.categories.findIndex(category =>
+            category.name === newCategory.name
+        );
+
+        this.setState({
+            categories: [
+                ...this.state.categories.slice(0, index),
+                newCategory,
+                ...this.state.categories.slice(index + 1)
+            ]
+        });
+    };
+
+    /**
      * Метод для отрисовки компонента
      *
      * @return {JSX}
@@ -72,7 +76,11 @@ class Introduction extends React.Component {
                     <h2>- Introduction -</h2>
                 </PageHeader>
 
-                <VerticalStepper categories={ this.state.categories } addCategoryName={ this._onAddCategoryName } />
+                <VerticalStepper
+                    categories={ this.state.categories }
+                    addCategoryName={ this._onAddCategoryName }
+                    editCategory={ this._onEditCategory }
+                />
             </div>
         );
     }

@@ -1,14 +1,5 @@
 import React            from 'react';
-import {
-    ListItem
-}                       from 'material-ui/List';
-import {
-    RaisedButton,
-    FlatButton,
-    TextField,
-    Subheader,
-    Slider
-}                       from 'material-ui';
+import { Slider }       from 'material-ui';
 import {
     TableRow,
     TableRowColumn
@@ -22,6 +13,7 @@ import {
  * @param {Object} category - категорий
  * @param {String} category.name - название категории
  * @param {Number} category.value - значение категории
+ * @param {Function} editCategory - функция, по редактированию категорий
  *
  * @class
  */
@@ -36,6 +28,13 @@ class EditCategoryItem extends React.Component {
         editCategory: () => {}
     };
 
+    /**
+     * Был изменено начение slider'а
+     *
+     * @param {Event} event - event
+     * @param {Number} value - новое значение для текущей категории
+     * @private
+     */
     _editCategory = (event, value) => {
         this.props.editCategory({
             name: this.props.category.name,
