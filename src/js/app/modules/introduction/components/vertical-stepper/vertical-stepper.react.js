@@ -5,6 +5,7 @@ import {
     StepLabel,
     StepContent
 }                       from 'material-ui/Stepper';
+import { Link }         from 'react-router';
 import {
     RaisedButton,
     FlatButton,
@@ -205,15 +206,19 @@ class VerticalStepper extends React.Component {
                     </Step>
                 </Stepper>
                 { finished && (
-                    <p style={{margin: '20px 0', textAlign: 'center'}}>
-                        <a
-                            href="#"
-                            onClick={event => {
-                                event.preventDefault();
-                                this.setState({ stepIndex: 0, finished: false });
-                            }}
-                        >Click here</a> to reset the example.
-                    </p>
+                    <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                        <div style={{ marginBottom: '10px' }}>
+                            <Link to="/dashboard">Перейти на главную страницу</Link> и отслеживать процесс.
+                        </div>
+                        <div>
+                            <span>Или ты можешь</span>
+                            <FlatButton
+                                label="изменить данные"
+                                style={{ marginLeft: '5px' }}
+                                onTouchTap={ () => this.setState({ stepIndex: 0, finished: false }) }
+                            />
+                        </div>
+                    </div>
                 )}
             </div>
         );
