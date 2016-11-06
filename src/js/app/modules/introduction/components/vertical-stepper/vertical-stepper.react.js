@@ -12,6 +12,9 @@ import {
 }                       from 'material-ui';
 
 import EditCategory     from '../edit-category/edit-category.react';
+import {
+    PolarAreaChart
+}                       from 'chart/index';
 
 /**
  * React Presentational Component - VerticalStepper
@@ -189,7 +192,9 @@ class VerticalStepper extends React.Component {
                                 Теперь ты видишь график, который показывает, на сколько все хорошо/плохо.
                                 Главное, это чтобы это "колесо жизни" могло катиться.
                             </p>
-                            <p>(тут будет график)</p>
+
+                            <PolarAreaChart data={ this.props.categories } />
+
                             <p>
                                 Теперь ты можешь переходить на основную страницу сайта, и заполнять свое колесо жизни более подробно.
                                 Очень важно, составить TODO лист того, что тебе надо сделать, для того, чтобы в каждой из сфер, что ты определил,
