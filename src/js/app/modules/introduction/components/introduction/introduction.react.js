@@ -49,7 +49,13 @@ class Introduction extends React.Component {
      */
     _onAddCategoryName = categoryName => {
         this.setState({
-            categories: [...this.state.categories, categoryName]
+            categories: [
+                ...this.state.categories,
+                {
+                    name: categoryName,
+                    value: 5
+                }
+            ]
         });
     };
 

@@ -6,13 +6,25 @@ import {
     StepContent
 }                       from 'material-ui/Stepper';
 import {
+    List,
+    ListItem
+}                       from 'material-ui/List';
+import {
     RaisedButton,
     FlatButton,
-    TextField
+    TextField,
+    Subheader,
+    Slider
 }                       from 'material-ui';
+import EditCategory     from '../edit-category/edit-category.react';
 
 /**
  * React Presentational Component - VerticalStepper
+ * Компонент отвечает за вывод всего Stepper'а.
+ * Состоит из 3 секция:
+ *  1. Ввод названий категорий
+ *  2. Ввод значение для категорий
+ *  3. Смотрит результат, перенаправляем на /dashboard
  *
  * @class
  */
@@ -63,7 +75,7 @@ class VerticalStepper extends React.Component {
         const { stepIndex } = this.state;
 
         if (stepIndex > 0) {
-            this.setState({ stepIndex: stepIndex + 1 });
+            this.setState({ stepIndex: stepIndex - 1 });
         }
     };
 
@@ -130,14 +142,6 @@ class VerticalStepper extends React.Component {
      */
     render() {
         const { finished, stepIndex } = this.state;
-        const bCategories = this.props.categories.map( category =>
-            <div key={`category-name-${category}`}>
-                <div className="row">
-                    <div className="col-sm-8">{ category }</div>
-                    <div className="col-sm-4">value</div>
-                </div>
-            </div>
-        );
 
         return (
             <div>
@@ -163,18 +167,18 @@ class VerticalStepper extends React.Component {
                             { this.renderStepActions(0) }
                         </StepContent>
                     </Step>
+
                     <Step>
                         <StepLabel>Определите значения для введенных категорий</StepLabel>
                         <StepContent>
-                            <p>
-                                Теперь вам нужно будет ввести значения, для введенных категорий.
-                                Оценка должна быть от 1 до 10 баллов. Где 1 - это полностью не удовлетворен тому,
-                                как обстоят дела в этой категории, а 10 - полностью удовлетворен.
-                            </p>
-                            { bCategories }
-                            { this.renderStepActions(1) }
+                            <EditCategory
+                                categories={ this.props.categories }
+                                handleNext={ this.handleNext }
+                                handlePrev={ this.handlePrev }
+                            />
                         </StepContent>
                     </Step>
+
                     <Step>
                         <StepLabel>Create campaign</StepLabel>
                         <StepContent>
