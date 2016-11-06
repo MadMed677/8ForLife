@@ -1,19 +1,14 @@
 import React            from 'react';
 import {
-    Step,
-    StepLabel,
-    StepContent
-}                       from 'material-ui/Stepper';
-import {
     List
 }                       from 'material-ui/List';
 import {
     RaisedButton,
     FlatButton,
-    Subheader,
+    Subheader
 }                       from 'material-ui';
 
-// import EditCategoryItem from './__item/edit-category__item.react';
+import EditCategoryItem from './__item/edit-category__item.react';
 
 /**
  * React Presentational Component - EditCategory
@@ -41,11 +36,6 @@ class EditCategory extends React.Component {
         value: 5
     };
 
-    componentDidMount() {
-        console.log('edit-category: categories: ', this.props.categories);
-    }
-
-
     /**
      * Метод для отрисовки компонента
      *
@@ -53,10 +43,9 @@ class EditCategory extends React.Component {
      * @public
      */
     render() {
-        // const bCategories = this.props.categories.map( item =>
-        //     <EditCategoryItem key={`category-name-${item.name}`} category={ item } />
-        // );
-        const bCategories = [];
+        const bCategories = this.props.categories.map( item =>
+            <EditCategoryItem key={`category-name-${item.name}`} category={ item } />
+        );
 
         return (
                 <div>
