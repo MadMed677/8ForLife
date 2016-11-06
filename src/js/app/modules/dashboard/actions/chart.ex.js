@@ -15,17 +15,17 @@ export const getAllChartData = () => dispatch => {
     setTimeout(() => {
         dispatch({
             type: CONSTANTS.GET_ALL_DATA_SUCCESS,
-            payload: [] || [
+            payload: [
                 {
-                    categoryName: 'Здоровье и спорт',
+                    name: 'Здоровье и спорт',
                     value: 9
                 },
                 {
-                    categoryName: 'Друзья и окружение',
+                    name: 'Друзья и окружение',
                     value: 8
                 },
                 {
-                    categoryName: 'Отношения',
+                    name: 'Отношения',
                     value: 7
                 }
             ],

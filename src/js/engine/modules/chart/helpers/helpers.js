@@ -1,6 +1,6 @@
 /**
  * Функция по преобразовыванию массива данных, вида
- * [{categoryName: 'name1', value: 1}, {categoryName: 'name2', value: 2}]
+ * [{name: 'name1', value: 1}, {name: 'name2', value: 2}]
  *
  * @param {Array} inputData - исходный массив с данными
  *
@@ -8,5 +8,5 @@
  */
 export const arrayConversion = (inputData = []) => ({
     data: inputData.map(d => d.value),
-    labels: inputData.map(d => d.categoryName)
+    labels: inputData.map(d => d.name)
 });

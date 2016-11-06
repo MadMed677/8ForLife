@@ -6,11 +6,11 @@ describe('# Хелпер функции для Chart', () => {
         afterEach(() => {
             inputData = [
                 {
-                    categoryName: 'Category 1',
+                    name: 'Category 1',
                     value: 1
                 },
                 {
-                    categoryName: 'Category 2',
+                    name: 'Category 2',
                     value: 2
                 }
             ];
