@@ -102,6 +102,17 @@ class VerticalStepper extends React.Component {
     };
 
     /**
+     * Изменяет значение категории
+     *
+     * @param {Object} newCategory - категория
+     *
+     * @private
+     */
+    _editCategory = (newCategory) => {
+        console.log('newCategory: ', newCategory);
+    };
+
+    /**
      * Отрисовка данных, для каждого шага
      *
      * @param {Number} step - номер текущего шага
@@ -175,6 +186,7 @@ class VerticalStepper extends React.Component {
                                 categories={ this.props.categories }
                                 handleNext={ this.handleNext }
                                 handlePrev={ this.handlePrev }
+                                editCategory={ this._editCategory }
                             />
                         </StepContent>
                     </Step>

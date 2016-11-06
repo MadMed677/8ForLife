@@ -9,6 +9,10 @@ import {
     Subheader,
     Slider
 }                       from 'material-ui';
+import {
+    TableRow,
+    TableRowColumn
+}                       from 'material-ui/Table';
 
 /**
  * React Presentational Component - EditCategoryItem
@@ -23,35 +27,20 @@ import {
  */
 class EditCategoryItem extends React.Component {
     static propTypes = {
-        category: React.PropTypes.object.isRequired
+        category: React.PropTypes.object.isRequired,
+        editCategory: React.PropTypes.func.isRequired
     };
 
     static defaultProps = {
-        category: {}
+        category: {},
+        editCategory: () => {}
     };
 
-    state = {
-        value: 5
-    };
-
-    /**
-     * Компонент замаунтился
-     */
-    componentDidMount() {
-        this.setState({
-            value: this.props.category.value
+    _editCategory = (event, value) => {
+        this.props.editCategory({
+            name: this.props.category.name,
+            value: value
         });
-    }
-
-    /**
-     * Изменили значение слайдера
-     *
-     * @param {Event} event - event
-     * @param {Number} value - значение слайдера
-     * @private
-     */
-    _handleSliderChange = (event, value) => {
-        this.setState({ value });
     };
 
     /**
@@ -64,19 +53,23 @@ class EditCategoryItem extends React.Component {
         const { category } = this.props;
 
         return (
-            <div key={`category-name-${category}`}>
-                <ListItem
-                    primaryText={ category.name }
-                    secondaryText={ this.state.value }
-                />
-                <Slider
-                    step={ 1 }
-                    value={ this.state.value }
-                    min={ 1 }
-                    max={ 10 }
-                    onChange={ this._handleSliderChange }
-                />
-            </div>
+            <TableRow key={`category-name-${category}`}>
+                <TableRowColumn>
+                    { category.name }
+                </TableRowColumn>
+                <TableRowColumn style={{ textAlign: 'center' }}>
+                    { category.value }
+                </TableRowColumn>
+                <TableRowColumn>
+                    <Slider
+                        step={ 1 }
+                        value={ category.value }
+                        min={ 1 }
+                        max={ 10 }
+                        onChange={ this._editCategory }
+                    />
+                </TableRowColumn>
+            </TableRow>
         );
     }
 }

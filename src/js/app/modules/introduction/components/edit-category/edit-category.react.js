@@ -3,6 +3,13 @@ import {
     List
 }                       from 'material-ui/List';
 import {
+    Table,
+    TableHeader,
+    TableRow,
+    TableBody,
+    TableHeaderColumn
+}                       from 'material-ui/Table';
+import {
     RaisedButton,
     FlatButton,
     Subheader
@@ -23,13 +30,15 @@ class EditCategory extends React.Component {
     static propTypes = {
         categories: React.PropTypes.array.isRequired,
         handleNext: React.PropTypes.func.isRequired,
-        handlePrev: React.PropTypes.func.isRequired
+        handlePrev: React.PropTypes.func.isRequired,
+        editCategory: React.PropTypes.func.isRequired
     };
 
     static defaultProps = {
         categories: [],
         handleNext: () => {},
-        handlePrev: () => {}
+        handlePrev: () => {},
+        editCategory: () => {}
     };
 
     state = {
@@ -44,38 +53,51 @@ class EditCategory extends React.Component {
      */
     render() {
         const bCategories = this.props.categories.map( item =>
-            <EditCategoryItem key={`category-name-${item.name}`} category={ item } />
+            <EditCategoryItem
+                key={`category-name-${item.name}`}
+                editCategory={ this.props.editCategory }
+                category={ item }
+            />
         );
 
         return (
-                <div>
-                    <p>
-                        Теперь вам нужно будет ввести значения, для введенных категорий.
-                        Оценка должна быть от 1 до 10 баллов. Где 1 - это полностью не удовлетворен тому,
-                        как обстоят дела в этой категории, а 10 - полностью удовлетворен.
-                    </p>
-                    <List>
-                        <Subheader>Категории</Subheader>
+            <div>
+                <p>
+                    Теперь вам нужно будет ввести значения, для введенных категорий.
+                    Оценка должна быть от 1 до 10 баллов. Где 1 - это полностью не удовлетворен тому,
+                    как обстоят дела в этой категории, а 10 - полностью удовлетворен.
+                </p>
+                <Table selectable={ false }>
+                    <TableHeader displaySelectAll={ false } adjustForCheckbox={ false }>
+                        <TableRow>
+                            <TableHeaderColumn>Категория</TableHeaderColumn>
+                            <TableHeaderColumn>Значение</TableHeaderColumn>
+                            <TableHeaderColumn></TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+
+                    <TableBody>
                         { bCategories }
-                    </List>
-                    <div style={{ margin: '12px 0' }}>
-                        <RaisedButton
-                            label="Next"
-                            disableTouchRipple={ true }
-                            disableFocusRipple={ true }
-                            secondary={ true }
-                            onTouchTap={ this.props.handleNext }
-                            style={{ marginRight: 12 }}
-                            disabled={ !this.props.categories.length }
-                        />
-                        <FlatButton
-                            label="Back"
-                            disableTouchRipple={ true }
-                            disableFocusRipple={ true }
-                            onTouchTap={ this.props.handlePrev }
-                        />
-                    </div>
+                    </TableBody>
+                </Table>
+                <div style={{ margin: '12px 0' }}>
+                    <RaisedButton
+                        label="Next"
+                        disableTouchRipple={ true }
+                        disableFocusRipple={ true }
+                        secondary={ true }
+                        onTouchTap={ this.props.handleNext }
+                        style={{ marginRight: 12 }}
+                        disabled={ !this.props.categories.length }
+                    />
+                    <FlatButton
+                        label="Back"
+                        disableTouchRipple={ true }
+                        disableFocusRipple={ true }
+                        onTouchTap={ this.props.handlePrev }
+                    />
                 </div>
+            </div>
         );
     }
 }
