@@ -114,7 +114,7 @@ class VerticalStepper extends React.Component {
         return (
             <div style={{ margin: '12px 0' }}>
                 <RaisedButton
-                    label={ stepIndex === 2 ? 'Finish' : 'Next' }
+                    label={ stepIndex === 2 ? 'Конец' : 'Далее' }
                     disableTouchRipple={ true }
                     disableFocusRipple={ true }
                     secondary={ true }
@@ -124,7 +124,7 @@ class VerticalStepper extends React.Component {
                 />
                 {step > 0 && (
                     <FlatButton
-                        label="Back"
+                        label="Назад"
                         disabled={ stepIndex === 0 }
                         disableTouchRipple={ true }
                         disableFocusRipple={ true }
@@ -182,9 +182,19 @@ class VerticalStepper extends React.Component {
                     </Step>
 
                     <Step>
-                        <StepLabel>Create campaign</StepLabel>
+                        <StepLabel>Результат</StepLabel>
                         <StepContent>
-                            <p>Lorem ipsum dolor adipisicing elit. Consectetur officia perferendis tempore vero?</p>
+                            <p>Отлично! Ты только что заполнил все данные.</p>
+                            <p>
+                                Теперь ты видишь график, который показывает, на сколько все хорошо/плохо.
+                                Главное, это чтобы это "колесо жизни" могло катиться.
+                            </p>
+                            <p>(тут будет график)</p>
+                            <p>
+                                Теперь ты можешь переходить на основную страницу сайта, и заполнять свое колесо жизни более подробно.
+                                Очень важно, составить TODO лист того, что тебе надо сделать, для того, чтобы в каждой из сфер, что ты определил,
+                                можно было сделать один из пунктов этого листа и это бы продвинуло тебя на шаг ближе к 10'тке.
+                            </p>
                             { this.renderStepActions(2) }
                         </StepContent>
                     </Step>

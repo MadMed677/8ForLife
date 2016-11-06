@@ -82,7 +82,7 @@ class EditCategory extends React.Component {
                 </Table>
                 <div style={{ margin: '12px 0' }}>
                     <RaisedButton
-                        label="Next"
+                        label="Далее"
                         disableTouchRipple={ true }
                         disableFocusRipple={ true }
                         secondary={ true }
@@ -91,7 +91,7 @@ class EditCategory extends React.Component {
                         disabled={ !this.props.categories.length }
                     />
                     <FlatButton
-                        label="Back"
+                        label="Назад"
                         disableTouchRipple={ true }
                         disableFocusRipple={ true }
                         onTouchTap={ this.props.handlePrev }
