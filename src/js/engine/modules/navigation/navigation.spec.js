@@ -21,6 +21,4 @@ describe('<Navigation />', () => {
     it('компонент замаунтился', () => {
         expect(wrapper.find(Navigation)).to.have.length(1);
     });
-
-    it('');
 });

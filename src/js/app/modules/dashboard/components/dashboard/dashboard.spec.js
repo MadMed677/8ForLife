@@ -91,8 +91,8 @@ describe('<Dashboard />', () => {
                 const action = {
                     type: CONST.GET_ALL_DATA_SUCCESS,
                     payload: [
-                        { categoryName: 'Здоровье и спорт', value: 9 },
-                        { categoryName: 'Random text', value: 3 }
+                        { name: 'Здоровье и спорт', value: 9 },
+                        { name: 'Random text', value: 3 }
                     ],
                     fetching: true
                 };
@@ -100,8 +100,8 @@ describe('<Dashboard />', () => {
 
                 expect(newState).to.deep.equal({
                     data: [
-                        { categoryName: 'Здоровье и спорт', value: 9 },
-                        { categoryName: 'Random text', value: 3 }
+                        { name: 'Здоровье и спорт', value: 9 },
+                        { name: 'Random text', value: 3 }
                     ],
                     fetching: true
                 });
@@ -138,7 +138,7 @@ describe('<Dashboard />', () => {
                 const action = {
                     type: CONST.GET_SINGLE_DATA_SUCCESS,
                     payload: {
-                        categoryName: 'Здоровье и спорт',
+                        name: 'Здоровье и спорт',
                         value: 9,
                         priority: 5,
                         todos: 7
@@ -149,7 +149,7 @@ describe('<Dashboard />', () => {
 
                 expect(newState).to.deep.equal({
                     data: {
-                        categoryName: 'Здоровье и спорт',
+                        name: 'Здоровье и спорт',
                         value: 9,
                         priority: 5,
                         todos: 7

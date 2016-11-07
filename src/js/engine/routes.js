@@ -5,7 +5,8 @@
  * @returns {Object} пути к точкам входа каждого модуля
  */
 const routes = {
-    dashboard: require('../app/modules/dashboard/module').default
+    dashboard: require('../app/modules/dashboard/module').default,
+    introduction: require('../app/modules/introduction/module').default
 };
 
 export default routes;

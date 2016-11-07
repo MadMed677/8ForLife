@@ -39,11 +39,11 @@
 ```javascript
 const data = [
     {
-        categoryName: 'Категория 1',
+        name: 'Категория 1',
         value: 8
     },
     {
-        categoryName: 'Категория 2',
+        name: 'Категория 2',
         value: 7
     }
 ];
