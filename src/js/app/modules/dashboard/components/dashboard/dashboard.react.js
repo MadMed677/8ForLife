@@ -4,13 +4,14 @@ import { connect }              from 'react-redux';
 import _                        from 'lodash';
 import { If, Then, Else }       from 'react-if';
 import actionCreators           from 'actions';
-import dashboardActions         from '../actions';
+import dashboardActions         from '../../actions';
 import {
     PolarAreaChart
 }                               from 'chart/index';
 import EmptyData                from 'empty-data/empty-data.react';
 
 import PageHeader               from 'page-header/page-header.react';
+import Information              from '../information/information.react';
 
 const mapStateToProps = state => ({
     allChartData: state.allChartData,
@@ -41,7 +42,10 @@ class Dashboard extends React.Component {
             data: [],
             fetching: false
         },
-        singleChartData: {}
+        singleChartData: {
+            data: {},
+            fetching: false
+        }
     };
 
     state = {};
@@ -61,10 +65,17 @@ class Dashboard extends React.Component {
      * @param {Event} e - event
      * @param {Object} chartElem - объект chart'а
      *
+     * @return {Boolean | Undefined}
      * @public
      */
     onChartClicked = (e, chartElem) => {
-        this.props.getSingleChartData(chartElem);
+        const index = _.get(chartElem, '_index');
+
+        // Выбрасываем, если клик был совершен не на chart'е
+        if (_.isUndefined(index)) return false;
+
+        const elem = this.props.allChartData.data[index];
+        this.props.getSingleChartData(elem);
     };
 
     /**
@@ -76,6 +87,11 @@ class Dashboard extends React.Component {
     render() {
         const { allChartData } = this.props;
         const { data = [] } = allChartData;
+        const singleChartData = _.isEmpty(this.props.singleChartData)
+            ? { data: {}, fetching: true }
+            : this.props.singleChartData;
+
+        console.log('allChartData: ', this.props.allChartData);
 
         return (
             <div className="container">
@@ -95,7 +111,7 @@ class Dashboard extends React.Component {
                         </If>
                     </div>
                     <div className="col-md-4">
-                        <h3>Statistic</h3>
+                        <Information category={ singleChartData } />
                     </div>
                 </div>
             </div>

@@ -1,8 +1,11 @@
 import React                from 'react';
 import { Router, Route }    from 'react-router';
 import { Provider }         from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import Root                 from './root.react';
 import Main                 from './main.react';
+
+injectTapEventPlugin();
 
 /**
  * React Container Component - AppContainer.

@@ -8,7 +8,7 @@ const initialState = {
 const allChartData = (state = initialState, action) => {
     switch (action.type) {
         case CONST.GET_ALL_DATA_REQUEST:
-            return state;
+            return initialState;
 
         case CONST.GET_ALL_DATA_SUCCESS:
             return {

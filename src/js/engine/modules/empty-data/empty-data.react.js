@@ -30,6 +30,8 @@ class EmptyData extends React.Component {
      * @public
      */
     render() {
+        console.log('this.props.fetching: ', this.props.fetching);
+
         return (
             <div className="empty-data">
                 <If condition={ this.props.fetching }>

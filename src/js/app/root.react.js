@@ -1,4 +1,5 @@
 import React                    from 'react';
+import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 
 /**
  * React Class Root. Самый базовый класс. Точка входа.
@@ -10,11 +11,19 @@ class Root extends React.Component {
         children: React.PropTypes.object
     };
 
+    /**
+     * Метод для отрисовки компонента
+     *
+     * @return {JSX}
+     * @public
+     */
     render() {
         return (
-            <div className="page">
-                { this.props.children }
-            </div>
+            <MuiThemeProvider>
+                <div className="page">
+                    { this.props.children }
+                </div>
+            </MuiThemeProvider>
         );
     }
 }

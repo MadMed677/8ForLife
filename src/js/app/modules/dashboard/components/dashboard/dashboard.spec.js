@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import _            from 'lodash';
 import { shallow, mount }  from 'enzyme';
 import Dashboard    from './dashboard.react';
-import CONST        from '../constants';
+import CONST        from '../../constants';
 
 describe('<Dashboard />', () => {
     describe('# компонент', () => {
@@ -62,7 +62,7 @@ describe('<Dashboard />', () => {
 
     describe('# reducers', () => {
         describe('all-data', () => {
-            const allChartDataReducer = require('../reducers/all-data').default;
+            const allChartDataReducer = require('../../reducers/all-data').default;
             let initialState = null;
 
             beforeEach(() => {
@@ -109,7 +109,7 @@ describe('<Dashboard />', () => {
         });
 
         describe('single-data', () => {
-            const singleDataReducer = require('../reducers/single-data').default;
+            const singleDataReducer = require('../../reducers/single-data').default;
             let initialState = null;
 
             beforeEach(() => {
