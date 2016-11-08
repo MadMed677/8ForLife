@@ -3,7 +3,6 @@ import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
 import actionCreators           from 'actions';
 import { pick }                 from 'lodash';
-import introductionActions      from '../../actions';
 
 import PageHeader               from 'page-header/page-header.react';
 import VerticalStepper          from '../vertical-stepper/vertical-stepper.react';
@@ -13,7 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators(pick(actionCreators, Object.keys(introductionActions)), dispatch);
+    bindActionCreators([], dispatch);
 
 /**
  * React Container Component - Introduction.
