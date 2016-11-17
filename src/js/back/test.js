@@ -1,12 +1,9 @@
-class Testclass {
-    constructor() {
-        this.route = '/testdata';
+const TestClass = {
+    route: '/testdata',
+    get: function*(next) {
+        this.body = 'This works';
+        yield next;
     }
+};
 
-    get() {
-        this.body = `Hello test class ${super.route}`;
-    }
-
-}
-
-module.exports = Testclass;
+module.exports = TestClass;

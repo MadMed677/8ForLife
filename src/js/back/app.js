@@ -4,17 +4,14 @@ const api       = new Router({
     prefix: '/api/v1'
 });
 
-const Testclass = require('./test');
-const test      = new Testclass();
+const TestClass = require('./test');
 
 api.get('/', function *(next) {
     this.body = 'Hello API';
     yield next;
 });
 
-api.get(test.route, function *(next) {
-    test.get.call(this, next);
-});
+api.get(TestClass.route, TestClass.get);
 
 app
     .use(api.routes())
