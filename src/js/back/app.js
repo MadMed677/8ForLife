@@ -7,7 +7,6 @@ require('./ctrls')(api);
 const port = process.env.PORT || 5000;
 
 
-app.set('port', port);
 api.get('/', function *(next) {
     this.body = 'Hello API';
     yield next;
