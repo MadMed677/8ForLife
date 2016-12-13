@@ -8,7 +8,6 @@ const ctrls = require('require-all')({
 module.exports = function(app) {
 	map(ctrls, ctrl => {
 		const item = ctrl.module.controller;
-		console.log('item: ', item);
 		return app.get(item.route, item.get);
 	});
 };
