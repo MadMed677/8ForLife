@@ -1,1 +1,1 @@
-web: node src/js/back/test.js
+web: npm start
