@@ -1,5 +1,6 @@
 import React                    from 'react';
 import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
+import Navigation               from 'navigation/navigation.react';
 
 /**
  * React Class Root. Самый базовый класс. Точка входа.
@@ -21,6 +22,7 @@ class Root extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className="page">
+                    <Navigation />
                     { this.props.children }
                 </div>
             </MuiThemeProvider>

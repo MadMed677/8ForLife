@@ -1,9 +1,9 @@
 import React                from 'react';
-import { Router, Route }    from 'react-router';
+import { Router, Route, IndexRoute }    from 'react-router';
 import { Provider }         from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Root                 from './root.react';
-import Main                 from './main.react';
+import Dashboard            from './modules/dashboard/module';
 
 injectTapEventPlugin();
 
@@ -17,7 +17,8 @@ class AppContainer extends React.Component {
     static propTypes = {
         routes: React.PropTypes.array.isRequired,
         store: React.PropTypes.object.isRequired,
-        history: React.PropTypes.object.isRequired
+        history: React.PropTypes.object.isRequired,
+	    children: React.PropTypes.object
     };
 
     /**
@@ -43,9 +44,8 @@ class AppContainer extends React.Component {
             <Provider store={ store }>
                 <Router history={ history }>
                     <Route path="/" component={ Root }>
-                        <Route path="/" component={ Main }>
-                            { routes }
-                        </Route>
+                        <IndexRoute component={ Dashboard.component } />
+                        { routes }
                     </Route>
                 </Router>
             </Provider>
