@@ -4,8 +4,12 @@ const TestClass = {
     route: '/test1',
 
     * get(next) {
-        this.body = 'test1';
-        yield next;
+        yield User.findById(1).then(response => {
+            const user = response.dataValues;
+            console.log('user: ', user);
+            this.type = 'json';
+            this.body = user;
+        });
     }
 };
 
