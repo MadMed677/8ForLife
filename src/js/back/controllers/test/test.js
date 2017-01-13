@@ -1,10 +1,12 @@
-const TestClass = {
-	route: '/test1',
+const User = require('../../models').User;
 
-	get: function*(next) {
-		this.body = 'test1';
-		yield next;
-	}
+const TestClass = {
+    route: '/test1',
+
+    * get(next) {
+        this.body = 'test1';
+        yield next;
+    }
 };
 
 module.exports = TestClass;
