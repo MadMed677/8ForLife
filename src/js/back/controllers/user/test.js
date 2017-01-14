@@ -3,7 +3,7 @@ const User = require('../../models').User;
 const TestClass = {
     route: '/test1',
 
-    * get(next) {
+    * get() {
         yield User.findById(1).then(response => {
             const user = response.dataValues;
             console.log('user: ', user);
