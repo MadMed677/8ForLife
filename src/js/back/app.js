@@ -1,13 +1,15 @@
 const app       = require('koa')();
 const Router    = require('koa-router');
+const db        = require('./models');
+
 const api       = new Router({
     prefix: '/api/v1'
 });
 require('./ctrls')(api);
+
 const port = process.env.PORT || 5000;
 
-
-api.get('/', function *(next) {
+api.get('/', function* (next) {
     this.body = 'Hello API';
     yield next;
 });
@@ -18,4 +20,7 @@ app
     .use(api.routes())
     .use(api.allowedMethods());
 
-app.listen(port, () => console.log(`Listening on ${port} port`));
+app.listen(port, () => {
+    db.sequelize.sync();
+    console.log(`Listening on ${port} port`);
+});

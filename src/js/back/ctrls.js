@@ -1,13 +1,14 @@
 const map = require('lodash.map');
+const path = require('path');
 const ctrls = require('require-all')({
-	dirname: __dirname + '/controllers',
-	filter: /(module).js/,
-	recursive: true
-})
+    dirname: path.join(__dirname, '/controllers'),
+    filter: /(module).js/,
+    recursive: true
+});
 
-module.exports = function(app) {
-	map(ctrls, ctrl => {
-		const item = ctrl.module.controller;
-		return app.get(item.route, item.get);
-	});
+module.exports = app => {
+    map(ctrls, ctrl => {
+        const item = ctrl.module.controller;
+        return app.get(item.route, item.get);
+    });
 };
